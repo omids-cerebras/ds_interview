@@ -1,0 +1,20 @@
+# linting
+black
+
+# Scientific computing and data analysis
+numpy
+scipy
+
+pandas
+polars
+statsmodels
+scikit-learn
+
+# Data visualization
+matplotlib
+seaborn
+plotly
+
+# Jupyter environment
+jupyterlab
+jupyter-book
