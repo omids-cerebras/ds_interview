@@ -1,4 +1,6 @@
-# ds_interview
+# Cerebrras Inference Data Science Interview
+![](./doc/cerebras_inference.png)
+
 DS Interview Questions
 
 ## Serving the Jupyter Book

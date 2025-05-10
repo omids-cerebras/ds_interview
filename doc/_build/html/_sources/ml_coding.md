@@ -1,5 +1,5 @@
 
-# Machine Learning Coding Problems
+# Machine Learning Problems
 
 ## Problem 1: Data Pipeline Optimization
 ### Task:

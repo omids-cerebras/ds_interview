@@ -1,4 +1,4 @@
-# Welcome to the Data Science Interview Problem Set
+# Cerebras Inference Data Science Interview
 
 This collection of problems is designed to help you practice and refine your skills for a data science interview at Cerebras Systems. The problems cover a wide range of topics, including probability, statistics, machine learning, and data analysis, reflecting the challenges you may encounter during the interview process.
 
