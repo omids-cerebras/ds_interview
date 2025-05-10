@@ -4,6 +4,7 @@
 format: jb-book
 root: intro
 chapters:
+- file: algo_ds
 - file: probability
 - file: statistics
-- file: markdown-notebooks
+- file: ml_coding
