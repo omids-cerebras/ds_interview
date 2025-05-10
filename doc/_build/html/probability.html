@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Probability Questions &#8212; Cerebras Systems: Data Science Interview</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'probability';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Statistics Questions" href="statistics.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Cerebras Systems: Data Science Interview - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Cerebras Systems: Data Science Interview - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Probability Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://https://github.com/omids-cerebras/ds_interview" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://https://github.com/omids-cerebras/ds_interview/issues/new?title=Issue%20on%20page%20%2Fprobability.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/probability.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Probability Questions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-questions">Easy Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-coin-toss-easy">Question 1: Coin Toss (Easy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-drawing-cards-easy">Question 2: Drawing Cards (Easy)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medium-questions">Medium Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-dice-sum-medium">Question 3: Dice Sum (Medium)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-defective-items-medium">Question 4: Defective Items (Medium)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-birthday-paradox-medium">Question 5: Birthday Paradox (Medium)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-rule-problem-medium">Bayes’ Rule Problem (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-identify-given-probabilities">Step 1: Identify Given Probabilities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-applying-bayes-rule">Step 2: Applying Bayes’ Rule</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-marginal-probability-of-a-positive-test">Step 3: Marginal Probability of a Positive Test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-posterior-probability">Step 4: Posterior Probability</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-answer">Final Answer:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="probability-questions">
+<h1>Probability Questions<a class="headerlink" href="#probability-questions" title="Link to this heading">#</a></h1>
+<section id="easy-questions">
+<h2>Easy Questions<a class="headerlink" href="#easy-questions" title="Link to this heading">#</a></h2>
+<section id="question-1-coin-toss-easy">
+<h3>Question 1: Coin Toss (Easy)<a class="headerlink" href="#question-1-coin-toss-easy" title="Link to this heading">#</a></h3>
+<p>You flip a fair coin three times. What is the probability of getting exactly two heads?</p>
+<p><strong>Answer:</strong></p>
+<ol class="arabic simple">
+<li><p>The total number of outcomes when flipping three coins is <span class="math notranslate nohighlight">\(2^3 = 8\)</span>.</p></li>
+<li><p>The number of favorable outcomes (two heads) can be calculated using combinations:<br />
+<span class="math notranslate nohighlight">\(
+\text{Number of ways} = \binom{3}{2} = \frac{3!}{2! \times 1!} = 3
+\)</span></p></li>
+<li><p>Probability:<br />
+<span class="math notranslate nohighlight">\(
+P = \frac{\text{Number of favorable outcomes}}{\text{Total outcomes}} = \frac{3}{8}
+\)</span></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="question-2-drawing-cards-easy">
+<h3>Question 2: Drawing Cards (Easy)<a class="headerlink" href="#question-2-drawing-cards-easy" title="Link to this heading">#</a></h3>
+<p>A standard deck of 52 cards has 4 aces. What is the probability of drawing an ace on the first draw?</p>
+<p><strong>Answer:</strong></p>
+<ol class="arabic simple">
+<li><p>There are 4 aces in a deck of 52 cards.</p></li>
+<li><p>The probability of drawing an ace:<br />
+<span class="math notranslate nohighlight">\(
+P = \frac{4}{52} = \frac{1}{13} \approx 0.0769
+\)</span></p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="medium-questions">
+<h2>Medium Questions<a class="headerlink" href="#medium-questions" title="Link to this heading">#</a></h2>
+<section id="question-3-dice-sum-medium">
+<h3>Question 3: Dice Sum (Medium)<a class="headerlink" href="#question-3-dice-sum-medium" title="Link to this heading">#</a></h3>
+<p>Two fair six-sided dice are rolled. What is the probability that the sum of the two dice equals 7?</p>
+<p><strong>Answer:</strong></p>
+<ol class="arabic simple">
+<li><p>Possible pairs that sum to 7:</p>
+<ul class="simple">
+<li><p>(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)</p></li>
+<li><p>There are 6 favorable outcomes.</p></li>
+</ul>
+</li>
+<li><p>Total number of outcomes when rolling two dice: <span class="math notranslate nohighlight">\(6 \times 6 = 36\)</span></p></li>
+<li><p>Probability:<br />
+<span class="math notranslate nohighlight">\(
+P = \frac{6}{36} = \frac{1}{6} \approx 0.1667
+\)</span></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="question-4-defective-items-medium">
+<h3>Question 4: Defective Items (Medium)<a class="headerlink" href="#question-4-defective-items-medium" title="Link to this heading">#</a></h3>
+<p>A factory produces 5% defective items. If you randomly pick 3 items, what is the probability that at least one is defective?</p>
+<p><strong>Answer:</strong></p>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be the event that at least one is defective.</p>
+<ul class="simple">
+<li><p>The complement of <span class="math notranslate nohighlight">\(A\)</span> (no defective items) can be calculated as follows:<br />
+<span class="math notranslate nohighlight">\(
+P(\text{no defective}) = (1 - 0.05)^3 = 0.95^3 \approx 0.857
+\)</span></p></li>
+</ul>
+</li>
+<li><p>Using the complement rule:<br />
+<span class="math notranslate nohighlight">\(
+P(\text{at least one defective}) = 1 - P(\text{no defective}) = 1 - 0.857 = 0.143
+\)</span></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="question-5-birthday-paradox-medium">
+<h3>Question 5: Birthday Paradox (Medium)<a class="headerlink" href="#question-5-birthday-paradox-medium" title="Link to this heading">#</a></h3>
+<p>What is the minimum number of people in a room such that the probability that at least two of them share the same birthday is greater than 50%?</p>
+<p><strong>Answer:</strong></p>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(n\)</span> be the number of people.</p></li>
+<li><p>The probability that no one shares the same birthday:<br />
+<span class="math notranslate nohighlight">\(
+P(\text{no shared birthday}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times \ldots \times \frac{365 - n + 1}{365}
+\)</span></p></li>
+<li><p>For <span class="math notranslate nohighlight">\(P(\text{at least one shared birthday}) &gt; 0.5\)</span>:</p>
+<ul class="simple">
+<li><p>Numerical approximation shows that with <span class="math notranslate nohighlight">\(n = 23\)</span>, the probability exceeds 50%.<br />
+<span class="math notranslate nohighlight">\(
+P(\text{at least one shared birthday}) \approx 1 - 0.4927 = 0.507
+\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>Answer:</strong> At least 23 people are needed.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bayes-rule-problem-medium">
+<h2>Bayes’ Rule Problem (Medium)<a class="headerlink" href="#bayes-rule-problem-medium" title="Link to this heading">#</a></h2>
+<section id="problem-statement">
+<h3>Problem Statement:<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h3>
+<p>A rare disease affects 1 in 1,000 people (prevalence = 0.1%). A medical test designed to detect the disease has the following characteristics:</p>
+<ul class="simple">
+<li><p><strong>Sensitivity (True Positive Rate):</strong> 99%</p></li>
+<li><p><strong>Specificity (True Negative Rate):</strong> 95%</p></li>
+</ul>
+<p>You test positive for the disease. What is the probability that you actually have the disease?</p>
+</section>
+<hr class="docutils" />
+<section id="solution">
+<h3>Solution:<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<section id="step-1-identify-given-probabilities">
+<h4>Step 1: Identify Given Probabilities<a class="headerlink" href="#step-1-identify-given-probabilities" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Prevalence (Prior Probability of Disease), <span class="math notranslate nohighlight">\(P(D)\)</span>:<br />
+<span class="math notranslate nohighlight">\(
+P(D) = \frac{1}{1000} = 0.001
+\)</span></p></li>
+<li><p>Sensitivity (Probability of Positive given Disease), <span class="math notranslate nohighlight">\(P(\text{Pos} \mid D)\)</span>:<br />
+<span class="math notranslate nohighlight">\(
+P(\text{Pos} \mid D) = 0.99
+\)</span></p></li>
+<li><p>False Positive Rate, <span class="math notranslate nohighlight">\(P(\text{Pos} \mid \neg D)\)</span>:<br />
+<span class="math notranslate nohighlight">\(
+P(\text{Pos} \mid \neg D) = 0.05
+\)</span></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="step-2-applying-bayes-rule">
+<h4>Step 2: Applying Bayes’ Rule<a class="headerlink" href="#step-2-applying-bayes-rule" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+P(D \mid \text{Pos}) = \frac{P(\text{Pos} \mid D) \cdot P(D)}{P(\text{Pos})}
+\)</span></p>
+</section>
+<section id="step-3-marginal-probability-of-a-positive-test">
+<h4>Step 3: Marginal Probability of a Positive Test<a class="headerlink" href="#step-3-marginal-probability-of-a-positive-test" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+P(\text{Pos}) = (0.99 \times 0.001) + (0.05 \times 0.999) = 0.05094
+\)</span></p>
+</section>
+<section id="step-4-posterior-probability">
+<h4>Step 4: Posterior Probability<a class="headerlink" href="#step-4-posterior-probability" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+P(D \mid \text{Pos}) = \frac{(0.99 \times 0.001)}{0.05094} \approx 0.0194 \text{ or } 1.94\%
+\)</span></p>
+</section>
+</section>
+<section id="final-answer">
+<h3>Final Answer:<a class="headerlink" href="#final-answer" title="Link to this heading">#</a></h3>
+<p>The probability that you actually have the disease after testing positive is about <strong>1.94%</strong>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="statistics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Statistics Questions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-questions">Easy Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-coin-toss-easy">Question 1: Coin Toss (Easy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-drawing-cards-easy">Question 2: Drawing Cards (Easy)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medium-questions">Medium Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-dice-sum-medium">Question 3: Dice Sum (Medium)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-defective-items-medium">Question 4: Defective Items (Medium)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-birthday-paradox-medium">Question 5: Birthday Paradox (Medium)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-rule-problem-medium">Bayes’ Rule Problem (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-identify-given-probabilities">Step 1: Identify Given Probabilities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-applying-bayes-rule">Step 2: Applying Bayes’ Rule</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-marginal-probability-of-a-positive-test">Step 3: Marginal Probability of a Positive Test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-posterior-probability">Step 4: Posterior Probability</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-answer">Final Answer:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omid Shams Solari & Ashot Melik-Martirosian
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

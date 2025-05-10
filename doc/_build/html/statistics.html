@@ -1,0 +1,767 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Statistics Questions &#8212; Cerebras Systems: Data Science Interview</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'statistics';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="Probability Questions" href="probability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Cerebras Systems: Data Science Interview - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Cerebras Systems: Data Science Interview - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="probability.html">Probability Questions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Statistics Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://https://github.com/omids-cerebras/ds_interview" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://https://github.com/omids-cerebras/ds_interview/issues/new?title=Issue%20on%20page%20%2Fstatistics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/statistics.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Statistics Questions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medium-questions">Medium Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-probability-density-function-medium">Question 1: Probability Density Function (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-probability-calculation">Step 1: Probability Calculation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-central-95-range">Step 2: Central 95% Range</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-binomial-distribution-medium">Question 2: Binomial Distribution (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-binomial-probability-formula">Step 1: Binomial Probability Formula</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-chi-square-test-for-independence-medium">Question 3: Chi-Square Test for Independence (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-observed-values-o">Step 1: Observed Values (O)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-expected-values-e">Step 2: Expected Values (E)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-chi-square-statistic">Step 3: Chi-Square Statistic</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-decision">Step 4: Decision</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-correlation-and-linear-regression-medium">Question 4: Correlation and Linear Regression (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-correlation-coefficient-r">Step 1: Correlation Coefficient (r)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-linear-regression-equation">Step 2: Linear Regression Equation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-poisson-distribution-medium">Question 5: Poisson Distribution (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-poisson-formula">Step 1: Poisson Formula</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="statistics-questions">
+<h1>Statistics Questions<a class="headerlink" href="#statistics-questions" title="Link to this heading">#</a></h1>
+<section id="medium-questions">
+<h2>Medium Questions<a class="headerlink" href="#medium-questions" title="Link to this heading">#</a></h2>
+<section id="question-1-probability-density-function-medium">
+<h3>Question 1: Probability Density Function (Medium)<a class="headerlink" href="#question-1-probability-density-function-medium" title="Link to this heading">#</a></h3>
+<p>The height of adult males in a population follows a normal distribution with a mean of 70 inches and a standard deviation of 3 inches.</p>
+<ul class="simple">
+<li><p>What is the probability that a randomly selected male is taller than 74 inches?</p></li>
+<li><p>What is the height range that covers the central 95% of the population?</p></li>
+</ul>
+<p><strong>Answer:</strong></p>
+<section id="step-1-probability-calculation">
+<h4>Step 1: Probability Calculation<a class="headerlink" href="#step-1-probability-calculation" title="Link to this heading">#</a></h4>
+<p>We need to calculate (P(X &gt; 74)).</p>
+<ul class="simple">
+<li><p>Calculate the Z-score:<br />
+<span class="math notranslate nohighlight">\(
+Z = \frac{X - \mu}{\sigma} = \frac{74 - 70}{3} = \frac{4}{3} \approx 1.33
+\)</span></p></li>
+<li><p>Using the standard normal distribution table,<br />
+<span class="math notranslate nohighlight">\(
+P(Z &gt; 1.33) = 1 - P(Z \leq 1.33) = 1 - 0.9082 = 0.0918
+\)</span></p></li>
+<li><p>Therefore, the probability of being taller than 74 inches is <strong>0.0918</strong> (or 9.18%).</p></li>
+</ul>
+</section>
+<section id="step-2-central-95-range">
+<h4>Step 2: Central 95% Range<a class="headerlink" href="#step-2-central-95-range" title="Link to this heading">#</a></h4>
+<p>The central 95% range corresponds to approximately 1.96 standard deviations from the mean.<br />
+<span class="math notranslate nohighlight">\(
+\text{Range} = [70 - 1.96 \times 3, 70 + 1.96 \times 3] = [64.12, 75.88]
+\)</span><br />
+Hence, the central 95% of male heights lies between <strong>64.12 inches</strong> and <strong>75.88 inches</strong>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="question-2-binomial-distribution-medium">
+<h3>Question 2: Binomial Distribution (Medium)<a class="headerlink" href="#question-2-binomial-distribution-medium" title="Link to this heading">#</a></h3>
+<p>A software company estimates that 80% of its updates are successfully installed on the first attempt. Out of 10 installations, what is the probability that exactly 8 are successful?</p>
+<p><strong>Answer:</strong></p>
+<section id="step-1-binomial-probability-formula">
+<h4>Step 1: Binomial Probability Formula<a class="headerlink" href="#step-1-binomial-probability-formula" title="Link to this heading">#</a></h4>
+<p>Given:</p>
+<ul class="simple">
+<li><p>(n = 10) (number of trials)</p></li>
+<li><p>(p = 0.8) (success probability)</p></li>
+<li><p>(k = 8) (number of successes)</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(
+P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}
+\)</span><br />
+$<span class="math notranslate nohighlight">\(
+P(X = 8) = \binom{10}{8} (0.8)^8 (0.2)^2
+\)</span><br />
+$<span class="math notranslate nohighlight">\(
+P(X = 8) = \frac{10 \times 9}{2} \times 0.1678 \times 0.04 = 45 \times 0.0067 = 0.301
+\)</span><br />
+Therefore, the probability that exactly 8 installations are successful is <strong>0.301</strong>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="question-3-chi-square-test-for-independence-medium">
+<h3>Question 3: Chi-Square Test for Independence (Medium)<a class="headerlink" href="#question-3-chi-square-test-for-independence-medium" title="Link to this heading">#</a></h3>
+<p>A survey was conducted to determine the preference for three brands (A, B, C) among two age groups (Youth, Adult). The data is as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Age Group</p></th>
+<th class="head"><p>Brand A</p></th>
+<th class="head"><p>Brand B</p></th>
+<th class="head"><p>Brand C</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Youth</p></td>
+<td><p>20</p></td>
+<td><p>30</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>Adult</p></td>
+<td><p>25</p></td>
+<td><p>35</p></td>
+<td><p>40</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Perform a Chi-Square test for independence at a 5% significance level.</p>
+<p><strong>Answer:</strong></p>
+<section id="step-1-observed-values-o">
+<h4>Step 1: Observed Values (O)<a class="headerlink" href="#step-1-observed-values-o" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>C</p></th>
+<th class="head"><p>Total</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Youth</p></td>
+<td><p>20</p></td>
+<td><p>30</p></td>
+<td><p>50</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>Adult</p></td>
+<td><p>25</p></td>
+<td><p>35</p></td>
+<td><p>40</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>Total</p></td>
+<td><p>45</p></td>
+<td><p>65</p></td>
+<td><p>90</p></td>
+<td><p>200</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="step-2-expected-values-e">
+<h4>Step 2: Expected Values (E)<a class="headerlink" href="#step-2-expected-values-e" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+E = \frac{\text{Row Total} \times \text{Column Total}}{\text{Grand Total}}
+\)</span><br />
+For Youth-Brand A:<br />
+<span class="math notranslate nohighlight">\(
+E = \frac{100 \times 45}{200} = 22.5
+\)</span></p>
+</section>
+<section id="step-3-chi-square-statistic">
+<h4>Step 3: Chi-Square Statistic<a class="headerlink" href="#step-3-chi-square-statistic" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+\chi^2 = \sum \frac{(O - E)^2}{E}
+\)</span><br />
+<span class="math notranslate nohighlight">\(
+\chi^2 = \frac{(20 - 22.5)^2}{22.5} + \frac{(30 - 32.5)^2}{32.5} + \frac{(50 - 45)^2}{45} + \ldots = 2.04
+\)</span></p>
+</section>
+<section id="step-4-decision">
+<h4>Step 4: Decision<a class="headerlink" href="#step-4-decision" title="Link to this heading">#</a></h4>
+<p>With 2 degrees of freedom, the critical value at 5% significance is 5.99. Since 2.04 &lt; 5.99, we <strong>fail to reject the null hypothesis</strong> (no significant association).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="question-4-correlation-and-linear-regression-medium">
+<h3>Question 4: Correlation and Linear Regression (Medium)<a class="headerlink" href="#question-4-correlation-and-linear-regression-medium" title="Link to this heading">#</a></h3>
+<p>You collected the following paired data points for study hours (X) and test scores (Y):<br />
+[(2, 50), (3, 60), (4, 70), (5, 80), (6, 90)]<br />
+Calculate the Pearson correlation coefficient and the linear regression equation.</p>
+<p><strong>Answer:</strong></p>
+<section id="step-1-correlation-coefficient-r">
+<h4>Step 1: Correlation Coefficient (r)<a class="headerlink" href="#step-1-correlation-coefficient-r" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+r = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum (X_i - \bar{X})^2 \sum (Y_i - \bar{Y})^2}}
+\)</span><br />
+<span class="math notranslate nohighlight">\(
+r = 1 \, \text{(perfect positive correlation)}
+\)</span></p>
+</section>
+<section id="step-2-linear-regression-equation">
+<h4>Step 2: Linear Regression Equation<a class="headerlink" href="#step-2-linear-regression-equation" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+Y = mX + c
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+m = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sum (X_i - \bar{X})^2} = 10
+\)</span><br />
+<span class="math notranslate nohighlight">\(
+c = \bar{Y} - m \bar{X} = 30
+\)</span><br />
+Equation:<br />
+<span class="math notranslate nohighlight">\(
+Y = 10X + 30
+\)</span></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="question-5-poisson-distribution-medium">
+<h3>Question 5: Poisson Distribution (Medium)<a class="headerlink" href="#question-5-poisson-distribution-medium" title="Link to this heading">#</a></h3>
+<p>The number of website visits per minute follows a Poisson distribution with an average rate of 3 visits per minute. What is the probability that exactly 5 visits occur in a given minute?</p>
+<p><strong>Answer:</strong></p>
+<section id="step-1-poisson-formula">
+<h4>Step 1: Poisson Formula<a class="headerlink" href="#step-1-poisson-formula" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+\)</span><br />
+<span class="math notranslate nohighlight">\(
+P(X = 5) = \frac{3^5 \times e^{-3}}{5!} = \frac{243 \times 0.0498}{120} = 0.1008
+\)</span><br />
+The probability of exactly 5 visits in a minute is <strong>0.1008</strong>.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="probability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Probability Questions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="markdown-notebooks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medium-questions">Medium Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-probability-density-function-medium">Question 1: Probability Density Function (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-probability-calculation">Step 1: Probability Calculation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-central-95-range">Step 2: Central 95% Range</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-binomial-distribution-medium">Question 2: Binomial Distribution (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-binomial-probability-formula">Step 1: Binomial Probability Formula</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-chi-square-test-for-independence-medium">Question 3: Chi-Square Test for Independence (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-observed-values-o">Step 1: Observed Values (O)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-expected-values-e">Step 2: Expected Values (E)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-chi-square-statistic">Step 3: Chi-Square Statistic</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-decision">Step 4: Decision</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-correlation-and-linear-regression-medium">Question 4: Correlation and Linear Regression (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-correlation-coefficient-r">Step 1: Correlation Coefficient (r)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-linear-regression-equation">Step 2: Linear Regression Equation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-poisson-distribution-medium">Question 5: Poisson Distribution (Medium)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-poisson-formula">Step 1: Poisson Formula</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omid Shams Solari & Ashot Melik-Martirosian
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -12,26 +12,14 @@ fi
 
 PACKAGE_NAME="interview"
 
-# Extract the Python version from requirements.in
-PYTHON_VERSION=$(grep "^# Python version:" requirements.in | awk -F': ' '{print $2}' | head -n 1)
-PYTHON_VERSION="${PYTHON_VERSION:-3.8}"  # Default to 3.8 if not specified
-
 # Check if the Conda environment already exists
 if conda env list | grep -q "^$PACKAGE_NAME\s"; then
     echo "Conda environment '$PACKAGE_NAME' already exists."
     source "$(conda info --base)/etc/profile.d/conda.sh"
     conda activate "$PACKAGE_NAME"
-
-    # Check if the Python version matches
-    CURRENT_PYTHON_VERSION=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-    if [ "$CURRENT_PYTHON_VERSION" != "$PYTHON_VERSION" ]; then
-        echo "Python version in the environment is $CURRENT_PYTHON_VERSION, but $PYTHON_VERSION is required."
-        echo "Please recreate the environment with the correct Python version."
-        exit 1
-    fi
 else
-    echo "Creating a new Conda environment named '$PACKAGE_NAME' with Python $PYTHON_VERSION..."
-    conda create -y -n "$PACKAGE_NAME" python="$PYTHON_VERSION"
+    echo "Creating a new Conda environment named '$PACKAGE_NAME'..."
+    conda create -y -n "$PACKAGE_NAME" python
     source "$(conda info --base)/etc/profile.d/conda.sh"
     conda activate "$PACKAGE_NAME"
 fi
