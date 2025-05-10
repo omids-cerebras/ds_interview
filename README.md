@@ -1,8 +1,6 @@
 # Cerebrras Inference Data Science Interview
 ![](./doc/cerebras_inference.png)
 
-DS Interview Questions
-
 ## Serving the Jupyter Book
 
 The serving script is located in `serve_jupyter_book.sh`.
