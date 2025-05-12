@@ -1,4 +1,4 @@
-# Cerebrras Inference Data Science Interview
+# Cerebras Inference Data Science Interview
 ![](./doc/cerebras_inference.png)
 
 ## Serving the Jupyter Book
