@@ -381,6 +381,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-law-of-large-numbers-easy">Question 1: Law of Large Numbers (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-conditional-probability-easy">Question 2: Conditional Probability (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-bayes-theorem-easy">Question 3: Bayes’ Theorem (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-independent-events-easy">Question 6: Independent Events (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7-random-variable-easy">Question 7: Random Variable (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8-central-limit-theorem-easy">Question 8: Central Limit Theorem (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-9-simpson-s-paradox-medium">Question 9: Simpson’s Paradox (Medium)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-questions">Easy Questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-coin-toss-easy">Question 1: Coin Toss (Easy)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-drawing-cards-easy">Question 2: Drawing Cards (Easy)</a></li>
@@ -417,6 +425,117 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="probability-questions">
 <h1>Probability Questions<a class="headerlink" href="#probability-questions" title="Link to this heading">#</a></h1>
+<section id="conceptual-questions">
+<h2>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h2>
+</section>
+<section id="question-1-law-of-large-numbers-easy">
+<h2>Question 1: Law of Large Numbers (Easy)<a class="headerlink" href="#question-1-law-of-large-numbers-easy" title="Link to this heading">#</a></h2>
+<p>What does the Law of Large Numbers state, and how is it useful in probability?</p>
+<p><strong>Answer:</strong><br />
+The Law of Large Numbers states that as the number of trials of a random experiment increases, the average of the observed outcomes approaches the expected value.</p>
+<ul class="simple">
+<li><p>In practical terms, it means that if you flip a fair coin many times, the proportion of heads will get closer to 0.5 as the number of flips increases.</p></li>
+<li><p>It is useful because it justifies using sample averages to estimate population parameters, especially in statistics and data analysis.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-2-conditional-probability-easy">
+<h2>Question 2: Conditional Probability (Easy)<a class="headerlink" href="#question-2-conditional-probability-easy" title="Link to this heading">#</a></h2>
+<p>Explain conditional probability and provide a real-world example.</p>
+<p><strong>Answer:</strong><br />
+Conditional probability is the probability of an event occurring given that another event has already occurred. It is denoted as <span class="math notranslate nohighlight">\(P(A \mid B)\)</span>.</p>
+<ul class="simple">
+<li><p><strong>Formula:</strong><br />
+<span class="math notranslate nohighlight">\( 
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\)</span></p></li>
+<li><p><strong>Example:</strong><br />
+Suppose 30% of employees in a company are engineers, and 20% are engineers who know Python. The probability that a randomly chosen engineer knows Python is:<br />
+<span class="math notranslate nohighlight">\(
+P(\text{Python} \mid \text{Engineer}) = \frac{0.20}{0.30} = 0.67
+\)</span>
+Hence, given that an employee is an engineer, there is a 67% chance they know Python.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-3-bayes-theorem-easy">
+<h2>Question 3: Bayes’ Theorem (Easy)<a class="headerlink" href="#question-3-bayes-theorem-easy" title="Link to this heading">#</a></h2>
+<p>What is Bayes’ Theorem, and why is it important?</p>
+<p><strong>Answer:</strong><br />
+Bayes’ Theorem provides a way to update the probability of a hypothesis based on new evidence.</p>
+<ul class="simple">
+<li><p><strong>Formula:</strong><br />
+<span class="math notranslate nohighlight">\(
+P(A \mid B) = \frac{P(B \mid A) \times P(A)}{P(B)}
+\)</span></p></li>
+<li><p><strong>Importance:</strong></p>
+<ul>
+<li><p>Allows us to incorporate new data into our existing beliefs.</p></li>
+<li><p>Widely used in applications such as spam filtering, medical diagnostics, and machine learning.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-6-independent-events-easy">
+<h2>Question 6: Independent Events (Easy)<a class="headerlink" href="#question-6-independent-events-easy" title="Link to this heading">#</a></h2>
+<p>What does it mean for two events to be independent?</p>
+<p><strong>Answer:</strong><br />
+Two events are independent if the occurrence of one event does not affect the probability of the other event occurring.</p>
+<ul class="simple">
+<li><p><strong>Mathematically:</strong><br />
+<span class="math notranslate nohighlight">\(
+P(A \cap B) = P(A) \times P(B)
+ \)</span></p></li>
+<li><p><strong>Example:</strong><br />
+Rolling a die and flipping a coin are independent events because the result of one does not influence the other.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-7-random-variable-easy">
+<h2>Question 7: Random Variable (Easy)<a class="headerlink" href="#question-7-random-variable-easy" title="Link to this heading">#</a></h2>
+<p>What is a random variable, and what are its types?</p>
+<p><strong>Answer:</strong><br />
+A random variable is a variable that takes numerical values determined by the outcome of a random experiment.</p>
+<ul class="simple">
+<li><p><strong>Types:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Discrete Random Variable:</strong> Takes a finite or countable number of values (e.g., number of heads in 10 coin flips).</p></li>
+<li><p><strong>Continuous Random Variable:</strong> Takes an infinite number of possible values within a range (e.g., height of individuals).</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-8-central-limit-theorem-easy">
+<h2>Question 8: Central Limit Theorem (Easy)<a class="headerlink" href="#question-8-central-limit-theorem-easy" title="Link to this heading">#</a></h2>
+<p>What does the Central Limit Theorem (CLT) state?</p>
+<p><strong>Answer:</strong><br />
+The CLT states that the distribution of the sample mean of a large number of independent, identically distributed (i.i.d.) random variables approaches a normal distribution, regardless of the original distribution’s shape.</p>
+<ul class="simple">
+<li><p><strong>Why it matters:</strong></p>
+<ul>
+<li><p>Enables statistical inference because we can assume normality when sample sizes are large.</p></li>
+<li><p>Important for hypothesis testing and constructing confidence intervals.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-9-simpson-s-paradox-medium">
+<h2>Question 9: Simpson’s Paradox (Medium)<a class="headerlink" href="#question-9-simpson-s-paradox-medium" title="Link to this heading">#</a></h2>
+<p>What is Simpson’s Paradox, and why is it counterintuitive?</p>
+<p><strong>Answer:</strong><br />
+Simpson’s Paradox occurs when a trend appears in several groups of data but disappears or reverses when the data is combined.</p>
+<ul class="simple">
+<li><p><strong>Example:</strong><br />
+A medication might show improvement in two separate age groups, but when the data is combined, it appears less effective.</p></li>
+<li><p><strong>Reason:</strong><br />
+The paradox arises due to lurking variables or confounding factors that distort the apparent relationship.</p></li>
+<li><p><strong>Key Lesson:</strong><br />
+Always analyze data carefully before combining groups.</p></li>
+</ul>
+</section>
 <section id="easy-questions">
 <h2>Easy Questions<a class="headerlink" href="#easy-questions" title="Link to this heading">#</a></h2>
 <section id="question-1-coin-toss-easy">
@@ -636,6 +755,14 @@ P(D \mid \text{Pos}) = \frac{(0.99 \times 0.001)}{0.05094} \approx 0.0194 \text{
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-law-of-large-numbers-easy">Question 1: Law of Large Numbers (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-conditional-probability-easy">Question 2: Conditional Probability (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-bayes-theorem-easy">Question 3: Bayes’ Theorem (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-independent-events-easy">Question 6: Independent Events (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7-random-variable-easy">Question 7: Random Variable (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8-central-limit-theorem-easy">Question 8: Central Limit Theorem (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-9-simpson-s-paradox-medium">Question 9: Simpson’s Paradox (Medium)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-questions">Easy Questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-coin-toss-easy">Question 1: Coin Toss (Easy)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-drawing-cards-easy">Question 2: Drawing Cards (Easy)</a></li>

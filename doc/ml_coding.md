@@ -1,8 +1,128 @@
 
 # Machine Learning Problems
 
+## Question 1: Bias-Variance Tradeoff (Easy)  
+What is the bias-variance tradeoff in machine learning, and how does it affect model performance?  
+
+**Answer:**
+- **Bias:** The error introduced when a model is too simple and fails to capture the underlying pattern. High bias can lead to underfitting.  
+- **Variance:** The error introduced when a model is too complex and captures noise rather than the underlying pattern. High variance can lead to overfitting.  
+- **Tradeoff:**  
+  - Increasing model complexity reduces bias but increases variance.  
+  - Reducing model complexity decreases variance but increases bias.  
+- **Solution:**  
+  - Use cross-validation to find a balance between bias and variance.  
+  - Regularization techniques (like L2 regularization) can help reduce variance without significantly increasing bias.  
+
+---
+
+## Question 2: Overfitting vs. Underfitting (Easy)  
+What are overfitting and underfitting, and how can you identify and mitigate them?  
+
+**Answer:**  
+- **Overfitting:**  
+  - The model learns the noise in the training data, leading to poor generalization on new data.  
+  - **Signs:** High accuracy on training data but low accuracy on validation data.  
+  - **Mitigation:** Regularization (L1, L2), cross-validation, simpler models, data augmentation.  
+
+- **Underfitting:**  
+  - The model is too simple to capture the underlying trend, resulting in poor performance on both training and validation data.  
+  - **Signs:** Low accuracy on both training and test data.  
+  - **Mitigation:** Increase model complexity, add more features, reduce regularization.  
+
+---
+
+## Question 3: Cross-Validation (Easy)  
+Why is cross-validation important in machine learning, and how does k-fold cross-validation work?  
+
+**Answer:**  
+- **Importance:**  
+  - Provides a more reliable estimate of model performance compared to a single train-test split.  
+  - Helps in detecting overfitting and underfitting.  
+- **K-Fold Cross-Validation:**  
+  - The data is split into k equal parts (folds).  
+  - The model is trained on k-1 folds and tested on the remaining fold.  
+  - This process repeats k times, with each fold used as the test set once.  
+  - The average performance across all k folds gives a more accurate estimate.  
+
+---
+
+## Question 4: Regularization (Easy)  
+What is regularization, and why is it important in machine learning?  
+
+**Answer:**  
+- **Definition:** Regularization adds a penalty to the loss function to prevent overfitting by constraining model complexity.  
+- **Types:**  
+  - **L1 Regularization (Lasso):** Adds the absolute value of the coefficients as a penalty. Can perform feature selection.  
+  - **L2 Regularization (Ridge):** Adds the squared value of the coefficients as a penalty. Helps in preventing large weights.  
+- **Importance:**  
+  - Reduces model variance without significantly increasing bias.  
+  - Helps maintain generalization by avoiding overly complex models.  
+
+---
+
+## Question 5: Gradient Descent (Easy)  
+What is gradient descent, and how does it work?  
+
+**Answer:**  
+- **Definition:** An optimization algorithm used to minimize the loss function by iteratively adjusting the model parameters.  
+- **Steps:**  
+  1. Initialize the parameters randomly.  
+  2. Calculate the gradient of the loss function.  
+  3. Update the parameters in the direction opposite to the gradient.  
+  4. Repeat until convergence.  
+- **Learning Rate:**  
+  - Controls the size of each step.  
+  - A high learning rate may overshoot the minimum, while a low rate may take too long to converge.  
+- **Variants:**  
+  - **Batch Gradient Descent:** Uses the entire dataset.  
+  - **Stochastic Gradient Descent (SGD):** Uses one data point at a time.  
+  - **Mini-Batch Gradient Descent:** Uses a small batch of data points.  
+
+---
+
+## Question 6: Dimensionality Reduction (Easy)  
+What is dimensionality reduction, and why is it used in machine learning?  
+
+**Answer:**  
+- **Definition:** The process of reducing the number of input variables while retaining the most important information.  
+- **Techniques:**  
+  - **Principal Component Analysis (PCA):** Projects data into a lower-dimensional space using eigenvectors.  
+  - **t-SNE:** Non-linear technique for visualizing high-dimensional data.  
+- **Why Use It:**  
+  - Reduces computational cost and memory usage.  
+  - Mitigates the curse of dimensionality.  
+  - Helps visualize data in 2D or 3D.  
+
+---
+
+## Question 7: Ensemble Learning (Easy)  
+What is ensemble learning, and why is it effective?  
+
+**Answer:**  
+- **Definition:** Combines the predictions of multiple models to improve accuracy.  
+- **Types:**  
+  - **Bagging:** Trains multiple models independently and averages their predictions (e.g., Random Forest).  
+  - **Boosting:** Trains models sequentially, where each model focuses on correcting the errors of the previous one (e.g., AdaBoost, Gradient Boosting).  
+- **Effectiveness:**  
+  - Reduces variance (bagging), bias (boosting), or both.  
+  - More robust to overfitting compared to a single model.  
+
+---
+
+## Question 8: Precision vs. Recall (Easy)  
+What is the difference between precision and recall, and when would you prioritize one over the other?  
+
+**Answer:**  
+- **Precision:** The proportion of true positives among all positive predictions.  
+- **Recall:** The proportion of true positives among all actual positives.  
+- **When to Prioritize:**  
+  - **Precision:** When false positives are costly (e.g., spam detection).  
+  - **Recall:** When false negatives are costly (e.g., cancer diagnosis).  
+- **Trade-off:** Increasing precision often decreases recall and vice versa. The F1 score is a harmonic mean of precision and recall to balance both.  
+
+
 ## Problem 1: Data Pipeline Optimization
-### Task:
 You are given a dataset `system_logs.csv` containing columns: `timestamp`, `cpu_util`, `mem_usage`, `disk_io`, `temp`. 
 - Your task is to implement a data pipeline that:
   - Loads the data
@@ -46,7 +166,6 @@ print(hourly_data.head())
 ---
 
 ## Problem 2: Predictive Maintenance with Logistic Regression
-### Task:
 Given the dataset `hardware_failures.csv`, predict hardware failure using logistic regression. 
 - The dataset has columns: `cpu_util`, `mem_usage`, `disk_io`, `temp`, `failure`.
 
@@ -86,7 +205,6 @@ print(f'Accuracy: {accuracy:.2f}')
 ---
 
 ## Problem 3: Real-Time Anomaly Detection Plotting
-### Task:
 You have a streaming dataset `sensor_data.csv` containing columns: `timestamp`, `cpu_util`, `anomaly_flag`. 
 - Plot the CPU utilization over time, highlighting anomalies.
 
@@ -113,7 +231,6 @@ plot_anomalies(df)
 ---
 
 ## Problem 4: Model Performance Visualization
-### Task:
 Train a decision tree classifier on the dataset `performance_data.csv`, containing features: `feature1`, `feature2`, `feature3`, `target`. 
 - Plot the ROC curve and calculate the AUC.
 
@@ -150,7 +267,6 @@ plot_roc_curve(y, y_pred)
 ---
 
 ## Problem 5: Clustering for Anomaly Detection
-### Task:
 Cluster the data from `metrics.csv` using K-Means to identify anomalous data points. 
 - Columns: `cpu_util`, `mem_usage`, `disk_io`, `temp`.
 

@@ -378,29 +378,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-bias-variance-tradeoff-easy">Question 1: Bias-Variance Tradeoff (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-overfitting-vs-underfitting-easy">Question 2: Overfitting vs. Underfitting (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-cross-validation-easy">Question 3: Cross-Validation (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-regularization-easy">Question 4: Regularization (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-gradient-descent-easy">Question 5: Gradient Descent (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-dimensionality-reduction-easy">Question 6: Dimensionality Reduction (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7-ensemble-learning-easy">Question 7: Ensemble Learning (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8-precision-vs-recall-easy">Question 8: Precision vs. Recall (Easy)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-data-pipeline-optimization">Problem 1: Data Pipeline Optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-skeleton">Code Skeleton:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-predictive-maintenance-with-logistic-regression">Problem 2: Predictive Maintenance with Logistic Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Task:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Code Skeleton:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code Skeleton:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-real-time-anomaly-detection-plotting">Problem 3: Real-Time Anomaly Detection Plotting</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Task:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Code Skeleton:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Code Skeleton:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-model-performance-visualization">Problem 4: Model Performance Visualization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Task:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Code Skeleton:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Code Skeleton:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-clustering-for-anomaly-detection">Problem 5: Clustering for Anomaly Detection</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Task:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Code Skeleton:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Code Skeleton:</a></li>
 </ul>
 </li>
 </ul>
@@ -416,10 +419,184 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-problems">
 <h1>Machine Learning Problems<a class="headerlink" href="#machine-learning-problems" title="Link to this heading">#</a></h1>
+<section id="question-1-bias-variance-tradeoff-easy">
+<h2>Question 1: Bias-Variance Tradeoff (Easy)<a class="headerlink" href="#question-1-bias-variance-tradeoff-easy" title="Link to this heading">#</a></h2>
+<p>What is the bias-variance tradeoff in machine learning, and how does it affect model performance?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Bias:</strong> The error introduced when a model is too simple and fails to capture the underlying pattern. High bias can lead to underfitting.</p></li>
+<li><p><strong>Variance:</strong> The error introduced when a model is too complex and captures noise rather than the underlying pattern. High variance can lead to overfitting.</p></li>
+<li><p><strong>Tradeoff:</strong></p>
+<ul>
+<li><p>Increasing model complexity reduces bias but increases variance.</p></li>
+<li><p>Reducing model complexity decreases variance but increases bias.</p></li>
+</ul>
+</li>
+<li><p><strong>Solution:</strong></p>
+<ul>
+<li><p>Use cross-validation to find a balance between bias and variance.</p></li>
+<li><p>Regularization techniques (like L2 regularization) can help reduce variance without significantly increasing bias.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-2-overfitting-vs-underfitting-easy">
+<h2>Question 2: Overfitting vs. Underfitting (Easy)<a class="headerlink" href="#question-2-overfitting-vs-underfitting-easy" title="Link to this heading">#</a></h2>
+<p>What are overfitting and underfitting, and how can you identify and mitigate them?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Overfitting:</strong></p>
+<ul>
+<li><p>The model learns the noise in the training data, leading to poor generalization on new data.</p></li>
+<li><p><strong>Signs:</strong> High accuracy on training data but low accuracy on validation data.</p></li>
+<li><p><strong>Mitigation:</strong> Regularization (L1, L2), cross-validation, simpler models, data augmentation.</p></li>
+</ul>
+</li>
+<li><p><strong>Underfitting:</strong></p>
+<ul>
+<li><p>The model is too simple to capture the underlying trend, resulting in poor performance on both training and validation data.</p></li>
+<li><p><strong>Signs:</strong> Low accuracy on both training and test data.</p></li>
+<li><p><strong>Mitigation:</strong> Increase model complexity, add more features, reduce regularization.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-3-cross-validation-easy">
+<h2>Question 3: Cross-Validation (Easy)<a class="headerlink" href="#question-3-cross-validation-easy" title="Link to this heading">#</a></h2>
+<p>Why is cross-validation important in machine learning, and how does k-fold cross-validation work?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Importance:</strong></p>
+<ul>
+<li><p>Provides a more reliable estimate of model performance compared to a single train-test split.</p></li>
+<li><p>Helps in detecting overfitting and underfitting.</p></li>
+</ul>
+</li>
+<li><p><strong>K-Fold Cross-Validation:</strong></p>
+<ul>
+<li><p>The data is split into k equal parts (folds).</p></li>
+<li><p>The model is trained on k-1 folds and tested on the remaining fold.</p></li>
+<li><p>This process repeats k times, with each fold used as the test set once.</p></li>
+<li><p>The average performance across all k folds gives a more accurate estimate.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-4-regularization-easy">
+<h2>Question 4: Regularization (Easy)<a class="headerlink" href="#question-4-regularization-easy" title="Link to this heading">#</a></h2>
+<p>What is regularization, and why is it important in machine learning?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Regularization adds a penalty to the loss function to prevent overfitting by constraining model complexity.</p></li>
+<li><p><strong>Types:</strong></p>
+<ul>
+<li><p><strong>L1 Regularization (Lasso):</strong> Adds the absolute value of the coefficients as a penalty. Can perform feature selection.</p></li>
+<li><p><strong>L2 Regularization (Ridge):</strong> Adds the squared value of the coefficients as a penalty. Helps in preventing large weights.</p></li>
+</ul>
+</li>
+<li><p><strong>Importance:</strong></p>
+<ul>
+<li><p>Reduces model variance without significantly increasing bias.</p></li>
+<li><p>Helps maintain generalization by avoiding overly complex models.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-5-gradient-descent-easy">
+<h2>Question 5: Gradient Descent (Easy)<a class="headerlink" href="#question-5-gradient-descent-easy" title="Link to this heading">#</a></h2>
+<p>What is gradient descent, and how does it work?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> An optimization algorithm used to minimize the loss function by iteratively adjusting the model parameters.</p></li>
+<li><p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Initialize the parameters randomly.</p></li>
+<li><p>Calculate the gradient of the loss function.</p></li>
+<li><p>Update the parameters in the direction opposite to the gradient.</p></li>
+<li><p>Repeat until convergence.</p></li>
+</ol>
+</li>
+<li><p><strong>Learning Rate:</strong></p>
+<ul>
+<li><p>Controls the size of each step.</p></li>
+<li><p>A high learning rate may overshoot the minimum, while a low rate may take too long to converge.</p></li>
+</ul>
+</li>
+<li><p><strong>Variants:</strong></p>
+<ul>
+<li><p><strong>Batch Gradient Descent:</strong> Uses the entire dataset.</p></li>
+<li><p><strong>Stochastic Gradient Descent (SGD):</strong> Uses one data point at a time.</p></li>
+<li><p><strong>Mini-Batch Gradient Descent:</strong> Uses a small batch of data points.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-6-dimensionality-reduction-easy">
+<h2>Question 6: Dimensionality Reduction (Easy)<a class="headerlink" href="#question-6-dimensionality-reduction-easy" title="Link to this heading">#</a></h2>
+<p>What is dimensionality reduction, and why is it used in machine learning?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> The process of reducing the number of input variables while retaining the most important information.</p></li>
+<li><p><strong>Techniques:</strong></p>
+<ul>
+<li><p><strong>Principal Component Analysis (PCA):</strong> Projects data into a lower-dimensional space using eigenvectors.</p></li>
+<li><p><strong>t-SNE:</strong> Non-linear technique for visualizing high-dimensional data.</p></li>
+</ul>
+</li>
+<li><p><strong>Why Use It:</strong></p>
+<ul>
+<li><p>Reduces computational cost and memory usage.</p></li>
+<li><p>Mitigates the curse of dimensionality.</p></li>
+<li><p>Helps visualize data in 2D or 3D.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-7-ensemble-learning-easy">
+<h2>Question 7: Ensemble Learning (Easy)<a class="headerlink" href="#question-7-ensemble-learning-easy" title="Link to this heading">#</a></h2>
+<p>What is ensemble learning, and why is it effective?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Definition:</strong> Combines the predictions of multiple models to improve accuracy.</p></li>
+<li><p><strong>Types:</strong></p>
+<ul>
+<li><p><strong>Bagging:</strong> Trains multiple models independently and averages their predictions (e.g., Random Forest).</p></li>
+<li><p><strong>Boosting:</strong> Trains models sequentially, where each model focuses on correcting the errors of the previous one (e.g., AdaBoost, Gradient Boosting).</p></li>
+</ul>
+</li>
+<li><p><strong>Effectiveness:</strong></p>
+<ul>
+<li><p>Reduces variance (bagging), bias (boosting), or both.</p></li>
+<li><p>More robust to overfitting compared to a single model.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-8-precision-vs-recall-easy">
+<h2>Question 8: Precision vs. Recall (Easy)<a class="headerlink" href="#question-8-precision-vs-recall-easy" title="Link to this heading">#</a></h2>
+<p>What is the difference between precision and recall, and when would you prioritize one over the other?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Precision:</strong> The proportion of true positives among all positive predictions.</p></li>
+<li><p><strong>Recall:</strong> The proportion of true positives among all actual positives.</p></li>
+<li><p><strong>When to Prioritize:</strong></p>
+<ul>
+<li><p><strong>Precision:</strong> When false positives are costly (e.g., spam detection).</p></li>
+<li><p><strong>Recall:</strong> When false negatives are costly (e.g., cancer diagnosis).</p></li>
+</ul>
+</li>
+<li><p><strong>Trade-off:</strong> Increasing precision often decreases recall and vice versa. The F1 score is a harmonic mean of precision and recall to balance both.</p></li>
+</ul>
+</section>
 <section id="problem-1-data-pipeline-optimization">
 <h2>Problem 1: Data Pipeline Optimization<a class="headerlink" href="#problem-1-data-pipeline-optimization" title="Link to this heading">#</a></h2>
-<section id="task">
-<h3>Task:<a class="headerlink" href="#task" title="Link to this heading">#</a></h3>
 <p>You are given a dataset <code class="docutils literal notranslate"><span class="pre">system_logs.csv</span></code> containing columns: <code class="docutils literal notranslate"><span class="pre">timestamp</span></code>, <code class="docutils literal notranslate"><span class="pre">cpu_util</span></code>, <code class="docutils literal notranslate"><span class="pre">mem_usage</span></code>, <code class="docutils literal notranslate"><span class="pre">disk_io</span></code>, <code class="docutils literal notranslate"><span class="pre">temp</span></code>.</p>
 <ul class="simple">
 <li><p>Your task is to implement a data pipeline that:</p>
@@ -430,7 +607,6 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
 <section id="code-skeleton">
 <h3>Code Skeleton:<a class="headerlink" href="#code-skeleton" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -473,15 +649,12 @@ document.write(`
 <hr class="docutils" />
 <section id="problem-2-predictive-maintenance-with-logistic-regression">
 <h2>Problem 2: Predictive Maintenance with Logistic Regression<a class="headerlink" href="#problem-2-predictive-maintenance-with-logistic-regression" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>Task:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Given the dataset <code class="docutils literal notranslate"><span class="pre">hardware_failures.csv</span></code>, predict hardware failure using logistic regression.</p>
 <ul class="simple">
 <li><p>The dataset has columns: <code class="docutils literal notranslate"><span class="pre">cpu_util</span></code>, <code class="docutils literal notranslate"><span class="pre">mem_usage</span></code>, <code class="docutils literal notranslate"><span class="pre">disk_io</span></code>, <code class="docutils literal notranslate"><span class="pre">temp</span></code>, <code class="docutils literal notranslate"><span class="pre">failure</span></code>.</p></li>
 </ul>
-</section>
-<section id="id2">
-<h3>Code Skeleton:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h3>Code Skeleton:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
@@ -521,15 +694,12 @@ document.write(`
 <hr class="docutils" />
 <section id="problem-3-real-time-anomaly-detection-plotting">
 <h2>Problem 3: Real-Time Anomaly Detection Plotting<a class="headerlink" href="#problem-3-real-time-anomaly-detection-plotting" title="Link to this heading">#</a></h2>
-<section id="id3">
-<h3>Task:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>You have a streaming dataset <code class="docutils literal notranslate"><span class="pre">sensor_data.csv</span></code> containing columns: <code class="docutils literal notranslate"><span class="pre">timestamp</span></code>, <code class="docutils literal notranslate"><span class="pre">cpu_util</span></code>, <code class="docutils literal notranslate"><span class="pre">anomaly_flag</span></code>.</p>
 <ul class="simple">
 <li><p>Plot the CPU utilization over time, highlighting anomalies.</p></li>
 </ul>
-</section>
-<section id="id4">
-<h3>Code Skeleton:<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Code Skeleton:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
@@ -556,15 +726,12 @@ document.write(`
 <hr class="docutils" />
 <section id="problem-4-model-performance-visualization">
 <h2>Problem 4: Model Performance Visualization<a class="headerlink" href="#problem-4-model-performance-visualization" title="Link to this heading">#</a></h2>
-<section id="id5">
-<h3>Task:<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Train a decision tree classifier on the dataset <code class="docutils literal notranslate"><span class="pre">performance_data.csv</span></code>, containing features: <code class="docutils literal notranslate"><span class="pre">feature1</span></code>, <code class="docutils literal notranslate"><span class="pre">feature2</span></code>, <code class="docutils literal notranslate"><span class="pre">feature3</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 <ul class="simple">
 <li><p>Plot the ROC curve and calculate the AUC.</p></li>
 </ul>
-</section>
-<section id="id6">
-<h3>Code Skeleton:<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3>Code Skeleton:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -601,15 +768,12 @@ document.write(`
 <hr class="docutils" />
 <section id="problem-5-clustering-for-anomaly-detection">
 <h2>Problem 5: Clustering for Anomaly Detection<a class="headerlink" href="#problem-5-clustering-for-anomaly-detection" title="Link to this heading">#</a></h2>
-<section id="id7">
-<h3>Task:<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>Cluster the data from <code class="docutils literal notranslate"><span class="pre">metrics.csv</span></code> using K-Means to identify anomalous data points.</p>
 <ul class="simple">
 <li><p>Columns: <code class="docutils literal notranslate"><span class="pre">cpu_util</span></code>, <code class="docutils literal notranslate"><span class="pre">mem_usage</span></code>, <code class="docutils literal notranslate"><span class="pre">disk_io</span></code>, <code class="docutils literal notranslate"><span class="pre">temp</span></code>.</p></li>
 </ul>
-</section>
-<section id="id8">
-<h3>Code Skeleton:<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>Code Skeleton:<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -701,29 +865,32 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-bias-variance-tradeoff-easy">Question 1: Bias-Variance Tradeoff (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-overfitting-vs-underfitting-easy">Question 2: Overfitting vs. Underfitting (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-cross-validation-easy">Question 3: Cross-Validation (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-regularization-easy">Question 4: Regularization (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-gradient-descent-easy">Question 5: Gradient Descent (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-dimensionality-reduction-easy">Question 6: Dimensionality Reduction (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7-ensemble-learning-easy">Question 7: Ensemble Learning (Easy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8-precision-vs-recall-easy">Question 8: Precision vs. Recall (Easy)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-data-pipeline-optimization">Problem 1: Data Pipeline Optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-skeleton">Code Skeleton:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-predictive-maintenance-with-logistic-regression">Problem 2: Predictive Maintenance with Logistic Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Task:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Code Skeleton:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code Skeleton:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-real-time-anomaly-detection-plotting">Problem 3: Real-Time Anomaly Detection Plotting</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Task:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Code Skeleton:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Code Skeleton:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-model-performance-visualization">Problem 4: Model Performance Visualization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Task:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Code Skeleton:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Code Skeleton:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-clustering-for-anomaly-detection">Problem 5: Clustering for Anomaly Detection</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Task:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Code Skeleton:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Code Skeleton:</a></li>
 </ul>
 </li>
 </ul>

@@ -1,5 +1,122 @@
 # Statistics Questions
 
+## Conceptual Questions
+
+### Question 1: Mean vs. Median (Easy)  
+What is the difference between the mean and the median, and when would you prefer to use the median over the mean?  
+
+**Answer:**  
+- **Mean:** The average of all values. Calculated as the sum of values divided by the number of values.  
+- **Median:** The middle value when the data is sorted.  
+- **When to Use Median:**  
+  - The median is preferred when the data is skewed or contains outliers because it is less affected by extreme values.  
+  - For example, in income data where a few individuals have significantly higher earnings, the median gives a more representative value than the mean.  
+
+---
+
+### Question 2: Variance and Standard Deviation (Conceptual)  
+What do variance and standard deviation measure in a dataset?  
+
+**Answer:**  
+- **Variance:** Measures how far data points are spread out from the mean. Calculated as the average of the squared differences from the mean.  
+- **Standard Deviation:** The square root of variance, giving a measure of spread in the same units as the data.  
+- **Usefulness:**  
+  - Both metrics quantify variability, but standard deviation is more interpretable because it has the same unit as the data.  
+  - Low variance means data points are close to the mean, while high variance indicates they are spread out.  
+
+---
+
+### Question 3: P-Value (Conceptual)  
+What is a p-value, and what does it signify in hypothesis testing?  
+
+**Answer:**  
+- The p-value is the probability of obtaining test results at least as extreme as the observed results, assuming that the null hypothesis is true.  
+- **Interpretation:**  
+  - A low p-value (< 0.05) indicates strong evidence against the null hypothesis, leading to its rejection.  
+  - A high p-value (> 0.05) suggests insufficient evidence to reject the null hypothesis.  
+- **Important Note:**  
+  - A low p-value does not prove that the alternative hypothesis is true; it only suggests that the observed data is unlikely under the null hypothesis.  
+
+---
+
+### Question 4: Confidence Interval (Conceptual)  
+What is a confidence interval, and how do you interpret it?  
+
+**Answer:**  
+- A confidence interval (CI) is a range of values used to estimate a population parameter with a specified level of confidence (e.g., 95%).  
+- **Interpretation:**  
+  - A 95% CI means that if the same sampling method is repeated many times, approximately 95% of the calculated intervals will contain the true population parameter.  
+- **Example:**  
+  - If the CI for the mean height of adults is (170 cm, 180 cm), it suggests that the true mean height is likely within this range.  
+
+---
+
+### Question 5: Type I and Type II Errors (Conceptual)  
+What are Type I and Type II errors in hypothesis testing?  
+
+**Answer:**  
+- **Type I Error (False Positive):** Rejecting the null hypothesis when it is true.  
+  - Example: Concluding that a drug is effective when it actually isn't.  
+- **Type II Error (False Negative):** Failing to reject the null hypothesis when it is false.  
+  - Example: Concluding that a drug is not effective when it actually is.  
+- **Trade-off:**  
+  - Reducing the probability of one type of error usually increases the probability of the other.  
+  - Significance level (alpha) controls the rate of Type I errors, while power affects Type II errors.  
+
+---
+
+### Question 6: Central Limit Theorem (Conceptual)  
+Why is the Central Limit Theorem (CLT) important in statistics?  
+
+**Answer:**  
+- The CLT states that the distribution of the sample mean approaches a normal distribution as the sample size increases, regardless of the population's original distribution.  
+- **Why Important:**  
+  - Allows us to make inferences about the population mean using sample data.  
+  - Justifies using the normal distribution for hypothesis testing and constructing confidence intervals, especially for large samples.  
+
+---
+
+### Question 7: Correlation vs. Causation (Conceptual)  
+What is the difference between correlation and causation?  
+
+**Answer:**  
+- **Correlation:** A statistical relationship between two variables, where changes in one variable are associated with changes in another.  
+- **Causation:** A relationship where one variable directly affects another.  
+- **Key Difference:**  
+  - Correlation does not imply causation.  
+  - Just because two variables are correlated does not mean one causes the other.  
+- **Example:**  
+  - Ice cream sales and drowning incidents may be correlated, but the cause is hot weather, not ice cream consumption.  
+
+---
+
+### Question 8: Homoscedasticity (Conceptual)  
+What is homoscedasticity, and why is it important in regression analysis?  
+
+**Answer:**  
+- **Homoscedasticity:** The variance of errors is constant across all levels of the independent variable.  
+- **Importance:**  
+  - A key assumption in linear regression.  
+  - Violations (heteroscedasticity) can lead to inefficient estimates and affect hypothesis tests.  
+- **Detection:**  
+  - Residual plots: Plot residuals against predicted values. If the spread of residuals is roughly constant, homoscedasticity is present.  
+
+---
+
+### Question 9: Overfitting vs. Underfitting (Conceptual)  
+What is the difference between overfitting and underfitting in machine learning?  
+
+**Answer:**  
+- **Overfitting:** The model learns the noise and patterns of the training data too well, performing poorly on new data.  
+- **Underfitting:** The model is too simple to capture the underlying pattern in the data.  
+- **Balance:**  
+  - Overfitting occurs when the model is too complex (e.g., high degree polynomial).  
+  - Underfitting occurs when the model is too simple (e.g., linear model for non-linear data).  
+- **Solution:**  
+  - Use cross-validation, regularization, and simpler models to combat overfitting.  
+  - Increase model complexity for underfitting.  
+---
+
 ## Medium Questions
 
 ### Question 1: Probability Density Function (Medium)  
@@ -44,10 +161,10 @@ Given:
 $
 P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}
 $  
-$$
+$
 P(X = 8) = \binom{10}{8} (0.8)^8 (0.2)^2
 $  
-$$
+$
 P(X = 8) = \frac{10 \times 9}{2} \times 0.1678 \times 0.04 = 45 \times 0.0067 = 0.301
 $  
 Therefore, the probability that exactly 8 installations are successful is **0.301**.  

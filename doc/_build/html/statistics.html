@@ -381,6 +381,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-mean-vs-median-easy">Question 1: Mean vs. Median (Easy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-variance-and-standard-deviation-conceptual">Question 2: Variance and Standard Deviation (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-p-value-conceptual">Question 3: P-Value (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-confidence-interval-conceptual">Question 4: Confidence Interval (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-type-i-and-type-ii-errors-conceptual">Question 5: Type I and Type II Errors (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-central-limit-theorem-conceptual">Question 6: Central Limit Theorem (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7-correlation-vs-causation-conceptual">Question 7: Correlation vs. Causation (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8-homoscedasticity-conceptual">Question 8: Homoscedasticity (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-9-overfitting-vs-underfitting-conceptual">Question 9: Overfitting vs. Underfitting (Conceptual)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medium-questions">Medium Questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-probability-density-function-medium">Question 1: Probability Density Function (Medium)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-probability-calculation">Step 1: Probability Calculation</a></li>
@@ -422,6 +434,182 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="statistics-questions">
 <h1>Statistics Questions<a class="headerlink" href="#statistics-questions" title="Link to this heading">#</a></h1>
+<section id="conceptual-questions">
+<h2>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h2>
+<section id="question-1-mean-vs-median-easy">
+<h3>Question 1: Mean vs. Median (Easy)<a class="headerlink" href="#question-1-mean-vs-median-easy" title="Link to this heading">#</a></h3>
+<p>What is the difference between the mean and the median, and when would you prefer to use the median over the mean?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Mean:</strong> The average of all values. Calculated as the sum of values divided by the number of values.</p></li>
+<li><p><strong>Median:</strong> The middle value when the data is sorted.</p></li>
+<li><p><strong>When to Use Median:</strong></p>
+<ul>
+<li><p>The median is preferred when the data is skewed or contains outliers because it is less affected by extreme values.</p></li>
+<li><p>For example, in income data where a few individuals have significantly higher earnings, the median gives a more representative value than the mean.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-2-variance-and-standard-deviation-conceptual">
+<h3>Question 2: Variance and Standard Deviation (Conceptual)<a class="headerlink" href="#question-2-variance-and-standard-deviation-conceptual" title="Link to this heading">#</a></h3>
+<p>What do variance and standard deviation measure in a dataset?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Variance:</strong> Measures how far data points are spread out from the mean. Calculated as the average of the squared differences from the mean.</p></li>
+<li><p><strong>Standard Deviation:</strong> The square root of variance, giving a measure of spread in the same units as the data.</p></li>
+<li><p><strong>Usefulness:</strong></p>
+<ul>
+<li><p>Both metrics quantify variability, but standard deviation is more interpretable because it has the same unit as the data.</p></li>
+<li><p>Low variance means data points are close to the mean, while high variance indicates they are spread out.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-3-p-value-conceptual">
+<h3>Question 3: P-Value (Conceptual)<a class="headerlink" href="#question-3-p-value-conceptual" title="Link to this heading">#</a></h3>
+<p>What is a p-value, and what does it signify in hypothesis testing?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p>The p-value is the probability of obtaining test results at least as extreme as the observed results, assuming that the null hypothesis is true.</p></li>
+<li><p><strong>Interpretation:</strong></p>
+<ul>
+<li><p>A low p-value (&lt; 0.05) indicates strong evidence against the null hypothesis, leading to its rejection.</p></li>
+<li><p>A high p-value (&gt; 0.05) suggests insufficient evidence to reject the null hypothesis.</p></li>
+</ul>
+</li>
+<li><p><strong>Important Note:</strong></p>
+<ul>
+<li><p>A low p-value does not prove that the alternative hypothesis is true; it only suggests that the observed data is unlikely under the null hypothesis.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-4-confidence-interval-conceptual">
+<h3>Question 4: Confidence Interval (Conceptual)<a class="headerlink" href="#question-4-confidence-interval-conceptual" title="Link to this heading">#</a></h3>
+<p>What is a confidence interval, and how do you interpret it?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p>A confidence interval (CI) is a range of values used to estimate a population parameter with a specified level of confidence (e.g., 95%).</p></li>
+<li><p><strong>Interpretation:</strong></p>
+<ul>
+<li><p>A 95% CI means that if the same sampling method is repeated many times, approximately 95% of the calculated intervals will contain the true population parameter.</p></li>
+</ul>
+</li>
+<li><p><strong>Example:</strong></p>
+<ul>
+<li><p>If the CI for the mean height of adults is (170 cm, 180 cm), it suggests that the true mean height is likely within this range.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-5-type-i-and-type-ii-errors-conceptual">
+<h3>Question 5: Type I and Type II Errors (Conceptual)<a class="headerlink" href="#question-5-type-i-and-type-ii-errors-conceptual" title="Link to this heading">#</a></h3>
+<p>What are Type I and Type II errors in hypothesis testing?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Type I Error (False Positive):</strong> Rejecting the null hypothesis when it is true.</p>
+<ul>
+<li><p>Example: Concluding that a drug is effective when it actually isn’t.</p></li>
+</ul>
+</li>
+<li><p><strong>Type II Error (False Negative):</strong> Failing to reject the null hypothesis when it is false.</p>
+<ul>
+<li><p>Example: Concluding that a drug is not effective when it actually is.</p></li>
+</ul>
+</li>
+<li><p><strong>Trade-off:</strong></p>
+<ul>
+<li><p>Reducing the probability of one type of error usually increases the probability of the other.</p></li>
+<li><p>Significance level (alpha) controls the rate of Type I errors, while power affects Type II errors.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-6-central-limit-theorem-conceptual">
+<h3>Question 6: Central Limit Theorem (Conceptual)<a class="headerlink" href="#question-6-central-limit-theorem-conceptual" title="Link to this heading">#</a></h3>
+<p>Why is the Central Limit Theorem (CLT) important in statistics?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p>The CLT states that the distribution of the sample mean approaches a normal distribution as the sample size increases, regardless of the population’s original distribution.</p></li>
+<li><p><strong>Why Important:</strong></p>
+<ul>
+<li><p>Allows us to make inferences about the population mean using sample data.</p></li>
+<li><p>Justifies using the normal distribution for hypothesis testing and constructing confidence intervals, especially for large samples.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-7-correlation-vs-causation-conceptual">
+<h3>Question 7: Correlation vs. Causation (Conceptual)<a class="headerlink" href="#question-7-correlation-vs-causation-conceptual" title="Link to this heading">#</a></h3>
+<p>What is the difference between correlation and causation?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Correlation:</strong> A statistical relationship between two variables, where changes in one variable are associated with changes in another.</p></li>
+<li><p><strong>Causation:</strong> A relationship where one variable directly affects another.</p></li>
+<li><p><strong>Key Difference:</strong></p>
+<ul>
+<li><p>Correlation does not imply causation.</p></li>
+<li><p>Just because two variables are correlated does not mean one causes the other.</p></li>
+</ul>
+</li>
+<li><p><strong>Example:</strong></p>
+<ul>
+<li><p>Ice cream sales and drowning incidents may be correlated, but the cause is hot weather, not ice cream consumption.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-8-homoscedasticity-conceptual">
+<h3>Question 8: Homoscedasticity (Conceptual)<a class="headerlink" href="#question-8-homoscedasticity-conceptual" title="Link to this heading">#</a></h3>
+<p>What is homoscedasticity, and why is it important in regression analysis?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Homoscedasticity:</strong> The variance of errors is constant across all levels of the independent variable.</p></li>
+<li><p><strong>Importance:</strong></p>
+<ul>
+<li><p>A key assumption in linear regression.</p></li>
+<li><p>Violations (heteroscedasticity) can lead to inefficient estimates and affect hypothesis tests.</p></li>
+</ul>
+</li>
+<li><p><strong>Detection:</strong></p>
+<ul>
+<li><p>Residual plots: Plot residuals against predicted values. If the spread of residuals is roughly constant, homoscedasticity is present.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-9-overfitting-vs-underfitting-conceptual">
+<h3>Question 9: Overfitting vs. Underfitting (Conceptual)<a class="headerlink" href="#question-9-overfitting-vs-underfitting-conceptual" title="Link to this heading">#</a></h3>
+<p>What is the difference between overfitting and underfitting in machine learning?</p>
+<p><strong>Answer:</strong></p>
+<ul class="simple">
+<li><p><strong>Overfitting:</strong> The model learns the noise and patterns of the training data too well, performing poorly on new data.</p></li>
+<li><p><strong>Underfitting:</strong> The model is too simple to capture the underlying pattern in the data.</p></li>
+<li><p><strong>Balance:</strong></p>
+<ul>
+<li><p>Overfitting occurs when the model is too complex (e.g., high degree polynomial).</p></li>
+<li><p>Underfitting occurs when the model is too simple (e.g., linear model for non-linear data).</p></li>
+</ul>
+</li>
+<li><p><strong>Solution:</strong></p>
+<ul>
+<li><p>Use cross-validation, regularization, and simpler models to combat overfitting.</p></li>
+<li><p>Increase model complexity for underfitting.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
 <section id="medium-questions">
 <h2>Medium Questions<a class="headerlink" href="#medium-questions" title="Link to this heading">#</a></h2>
 <section id="question-1-probability-density-function-medium">
@@ -472,10 +660,10 @@ Hence, the central 95% of male heights lies between <strong>64.12 inches</strong
 <p><span class="math notranslate nohighlight">\(
 P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}
 \)</span><br />
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 P(X = 8) = \binom{10}{8} (0.8)^8 (0.2)^2
 \)</span><br />
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 P(X = 8) = \frac{10 \times 9}{2} \times 0.1678 \times 0.04 = 45 \times 0.0067 = 0.301
 \)</span><br />
 Therefore, the probability that exactly 8 installations are successful is <strong>0.301</strong>.</p>
@@ -683,6 +871,18 @@ The probability of exactly 5 visits in a minute is <strong>0.1008</strong>.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-mean-vs-median-easy">Question 1: Mean vs. Median (Easy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-variance-and-standard-deviation-conceptual">Question 2: Variance and Standard Deviation (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-p-value-conceptual">Question 3: P-Value (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-confidence-interval-conceptual">Question 4: Confidence Interval (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-type-i-and-type-ii-errors-conceptual">Question 5: Type I and Type II Errors (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-central-limit-theorem-conceptual">Question 6: Central Limit Theorem (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7-correlation-vs-causation-conceptual">Question 7: Correlation vs. Causation (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8-homoscedasticity-conceptual">Question 8: Homoscedasticity (Conceptual)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-9-overfitting-vs-underfitting-conceptual">Question 9: Overfitting vs. Underfitting (Conceptual)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medium-questions">Medium Questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-probability-density-function-medium">Question 1: Probability Density Function (Medium)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-probability-calculation">Step 1: Probability Calculation</a></li>
