@@ -1,0 +1,1297 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Center Energy Analysis &#8212; Cerebras Systems: Data Science Interview</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data_center';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Cerebras Inference Data Science Interview" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Cerebras Systems: Data Science Interview - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Cerebras Systems: Data Science Interview - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Cerebras Inference Data Science Interview
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Center Energy Analysis</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://https://github.com/omids-cerebras/ds_interview" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://https://github.com/omids-cerebras/ds_interview/issues/new?title=Issue%20on%20page%20%2Fdata_center.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/data_center.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Center Energy Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-center-dataset">Load Data Center Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-data-center-dataset-and-make-one-simple-plot">Generate the Data Center dataset and make one simple plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing-and-cleaning">Data Preprocessing and Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training-and-evaluation">Model Training and Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interview-task-model-interpretation-and-data-discovery-for-server-power-consumption">Interview Task: Model Interpretation and Data Discovery for Server Power Consumption**</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-center-energy-analysis">
+<h1>Data Center Energy Analysis<a class="headerlink" href="#data-center-energy-analysis" title="Link to this heading">#</a></h1>
+<p>The core problem is to understand and predict the power consumption of individual servers within a data center. This is a significant challenge for data center operators aiming to optimize energy usage, manage thermal loads, and plan capacity. Power consumption isn’t static; it’s influenced by a variety of factors including the physical location of a server (which might correlate with cooling efficiency or proximity to power distribution units), the type of computational job it’s currently running (e.g., CPU-intensive tasks vs. idle states), and inherent server characteristics like age or firmware.</p>
+<p>Furthermore, data center operations often exhibit temporal patterns. For instance, workloads might be higher during business hours or specific days of the week, leading to fluctuations in power demand.</p>
+<p>The machine learning workflow aims to model these complex relationships by,</p>
+<ol class="arabic simple">
+<li><p>Generating synthetic data that mimics these characteristics,</p></li>
+<li><p>Preprocessing this data to ensure it’s suitable for analysis, which includes handling missing values, normalizing features, and encoding categorical variables,</p></li>
+<li><p>Training a predictive model (like a Random Forest Regressor),</p></li>
+<li><p>And interpreting the model’s findings to identify which factors are most influential in determining server power usage, including visualizing spatial and time-based trends.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-data-center-dataset">
+<h2>Load Data Center Dataset<a class="headerlink" href="#load-data-center-dataset" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">generate_server_data_timeseries</span></code> function in the Python script is designed to create a synthetic dataset that mimics the operational data you might find for servers in a data center over a period.</p>
+<p>The output of this function is a <strong>pandas DataFrame</strong>. Each row in this DataFrame represents a single data point for a specific server at a particular hour over several simulated days.</p>
+<p>Here’s a breakdown of what each column in the output DataFrame signifies:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">server_id</span></code></strong>: A unique string identifier for each server (e.g., “server_001”).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">timestamp</span></code></strong>: A datetime object indicating the specific date and hour for that data record.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">x_position</span></code></strong>: An integer representing the <strong>row number</strong> where the server is physically located in the data center layout.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">y_position</span></code></strong>: An integer representing the <strong>column number</strong> where the server is physically located.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">job_type</span></code></strong>: A string indicating the type of computational workload the server is handling at that specific timestamp (e.g., ‘CPU_intensive’, ‘IO_intensive’, ‘Idle’). The job type for a server can change over the simulated time.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">server_age_days</span></code></strong>: An integer representing the age of the server in days at that point in time. This value increases as the simulation progresses.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">last_maintenance_days_ago</span></code></strong>: An integer indicating how many days have passed since the server’s last simulated maintenance. This also increases over time.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">firmware_version</span></code></strong>: A string representing the firmware version of the server. In this simulation, it’s static for each server.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">rack_temperature_celsius</span></code></strong>: A floating-point number representing the simulated ambient temperature of the server rack in Celsius. This value has a simulated daily and weekly cyclical pattern with some added noise.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">power_consumption_kw</span></code></strong>: This is the primary target variable you’d want to predict. It’s a floating-point number representing the server’s power consumption in kilowatts (kW) at that specific timestamp. The value is calculated based on a combination of the server’s job type, its x/y position, a general time-of-day effect, and some random noise.</p></li>
+</ul>
+<p>Essentially, the function generates a table where you can see, for each server, how its characteristics (like job type, age, temperature) and its power consumption evolve hourly over the simulated period. The function also intentionally introduces a small number of missing values (NaNs) into some of these columns to simulate real-world data imperfections, which the subsequent preprocessing steps in the workflow are designed to handle.</p>
+<section id="generate-the-data-center-dataset-and-make-one-simple-plot">
+<h3>Generate the Data Center dataset and make one simple plot<a class="headerlink" href="#generate-the-data-center-dataset-and-make-one-simple-plot" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_data</span>
+
+<span class="c1"># Generate the synthetic data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">()</span>
+<span class="c1"># Display the first few rows of the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># Plot the power consumption of the first server over time</span>
+
+<span class="c1"># Load the dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">()</span>
+
+<span class="c1"># Display the first few rows of the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Plotting power consumption over time for a specific server</span>
+<span class="n">server_id</span> <span class="o">=</span> <span class="s1">&#39;server_001&#39;</span>
+<span class="n">server_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;server_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">server_id</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">server_data</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">],</span> <span class="n">server_data</span><span class="p">[</span><span class="s1">&#39;power_consumption_kw&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Power Consumption Over Time for </span><span class="si">{</span><span class="n">server_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Consumption (kW)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_data</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:12,955 - INFO - --- Time-Series Data Generation Complete ---
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:12,956 - INFO - Generated 8400 records (50 servers, 168 timesteps each).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:12,956 - INFO - Columns: [&#39;server_id&#39;, &#39;timestamp&#39;, &#39;x_position&#39;, &#39;y_position&#39;, &#39;job_type&#39;, &#39;server_age_days&#39;, &#39;last_maintenance_days_ago&#39;, &#39;firmware_version&#39;, &#39;rack_temperature_celsius&#39;, &#39;power_consumption_kw&#39;]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:12,962 - INFO - Sample data:
+    server_id           timestamp  x_position  y_position       job_type  \
+0  server_001 2024-01-01 00:00:00   37.454012   95.071431  CPU_intensive   
+1  server_001 2024-01-01 01:00:00   37.454012   95.071431  CPU_intensive   
+2  server_001 2024-01-01 02:00:00   37.454012   95.071431  CPU_intensive   
+3  server_001 2024-01-01 03:00:00   37.454012   95.071431  CPU_intensive   
+4  server_001 2024-01-01 04:00:00   37.454012   95.071431  CPU_intensive   
+
+   server_age_days  last_maintenance_days_ago firmware_version  \
+0           1160.0                         71      v2.0.0_beta   
+1           1160.0                         71      v2.0.0_beta   
+2           1160.0                         71      v2.0.0_beta   
+3           1160.0                         71      v2.0.0_beta   
+4           1160.0                         71      v2.0.0_beta   
+
+   rack_temperature_celsius  power_consumption_kw  
+0                       NaN              0.228967  
+1                 17.854253              0.263216  
+2                 19.165728              0.210511  
+3                 21.324186              0.226486  
+4                 20.220519              0.224661  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>server_id</th>
+      <th>timestamp</th>
+      <th>x_position</th>
+      <th>y_position</th>
+      <th>job_type</th>
+      <th>server_age_days</th>
+      <th>last_maintenance_days_ago</th>
+      <th>firmware_version</th>
+      <th>rack_temperature_celsius</th>
+      <th>power_consumption_kw</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>server_001</td>
+      <td>2024-01-01 00:00:00</td>
+      <td>37.454012</td>
+      <td>95.071431</td>
+      <td>CPU_intensive</td>
+      <td>1160.0</td>
+      <td>71</td>
+      <td>v2.0.0_beta</td>
+      <td>NaN</td>
+      <td>0.228967</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>server_001</td>
+      <td>2024-01-01 01:00:00</td>
+      <td>37.454012</td>
+      <td>95.071431</td>
+      <td>CPU_intensive</td>
+      <td>1160.0</td>
+      <td>71</td>
+      <td>v2.0.0_beta</td>
+      <td>17.854253</td>
+      <td>0.263216</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>server_001</td>
+      <td>2024-01-01 02:00:00</td>
+      <td>37.454012</td>
+      <td>95.071431</td>
+      <td>CPU_intensive</td>
+      <td>1160.0</td>
+      <td>71</td>
+      <td>v2.0.0_beta</td>
+      <td>19.165728</td>
+      <td>0.210511</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>server_001</td>
+      <td>2024-01-01 03:00:00</td>
+      <td>37.454012</td>
+      <td>95.071431</td>
+      <td>CPU_intensive</td>
+      <td>1160.0</td>
+      <td>71</td>
+      <td>v2.0.0_beta</td>
+      <td>21.324186</td>
+      <td>0.226486</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>server_001</td>
+      <td>2024-01-01 04:00:00</td>
+      <td>37.454012</td>
+      <td>95.071431</td>
+      <td>CPU_intensive</td>
+      <td>1160.0</td>
+      <td>71</td>
+      <td>v2.0.0_beta</td>
+      <td>20.220519</td>
+      <td>0.224661</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>8395</th>
+      <td>server_050</td>
+      <td>2024-01-07 19:00:00</td>
+      <td>16.080805</td>
+      <td>54.873379</td>
+      <td>IO_intensive</td>
+      <td>857.0</td>
+      <td>168</td>
+      <td>v2.1.5</td>
+      <td>15.000000</td>
+      <td>0.142799</td>
+    </tr>
+    <tr>
+      <th>8396</th>
+      <td>server_050</td>
+      <td>2024-01-07 20:00:00</td>
+      <td>16.080805</td>
+      <td>54.873379</td>
+      <td>IO_intensive</td>
+      <td>857.0</td>
+      <td>168</td>
+      <td>v2.1.5</td>
+      <td>15.000000</td>
+      <td>0.154587</td>
+    </tr>
+    <tr>
+      <th>8397</th>
+      <td>server_050</td>
+      <td>2024-01-07 21:00:00</td>
+      <td>16.080805</td>
+      <td>54.873379</td>
+      <td>IO_intensive</td>
+      <td>857.0</td>
+      <td>168</td>
+      <td>v2.1.5</td>
+      <td>15.000000</td>
+      <td>0.121639</td>
+    </tr>
+    <tr>
+      <th>8398</th>
+      <td>server_050</td>
+      <td>2024-01-07 22:00:00</td>
+      <td>16.080805</td>
+      <td>54.873379</td>
+      <td>IO_intensive</td>
+      <td>857.0</td>
+      <td>168</td>
+      <td>v2.1.5</td>
+      <td>15.000000</td>
+      <td>0.125452</td>
+    </tr>
+    <tr>
+      <th>8399</th>
+      <td>server_050</td>
+      <td>2024-01-07 23:00:00</td>
+      <td>16.080805</td>
+      <td>54.873379</td>
+      <td>IO_intensive</td>
+      <td>857.0</td>
+      <td>168</td>
+      <td>v2.1.5</td>
+      <td>15.000000</td>
+      <td>0.122918</td>
+    </tr>
+  </tbody>
+</table>
+<p>8400 rows × 10 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="data-preprocessing-and-cleaning">
+<h2>Data Preprocessing and Cleaning<a class="headerlink" href="#data-preprocessing-and-cleaning" title="Link to this heading">#</a></h2>
+<p>Write a Python function, let’s call it <strong><code class="docutils literal notranslate"><span class="pre">preprocess_data</span></code></strong>, that takes a raw pandas DataFrame containing data center dataset above and prepares it for a machine learning model aimed at predicting power consumption.</p>
+<p><strong>Interview Task: Data Preprocessing for Server Power Consumption Prediction</strong></p>
+<p><strong>Input:</strong>
+The function will receive a pandas DataFrame. Assume this DataFrame has columns similar to the following (though you should make your function flexible to column names if possible, or clearly state assumptions):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">server_id</span></code> (string, identifier)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code> (datetime object)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x_position</span></code> (integer, server row location)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_position</span></code> (integer, server column location)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">job_type</span></code> (string, categorical)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">server_age_days</span></code> (integer)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_maintenance_days_ago</span></code> (integer)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firmware_version</span></code> (string, categorical)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rack_temperature_celsius</span></code> (float)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">power_consumption_kw</span></code> (float, this will be the target variable)</p></li>
+<li><p><em>(Assume some columns might contain missing values.)</em></p></li>
+</ul>
+<p><strong>Requirements for the <code class="docutils literal notranslate"><span class="pre">preprocess_data</span></code> function:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Feature Engineering:</strong></p>
+<ul class="simple">
+<li><p>From the <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> column, extract the following new features:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">hour_of_day</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">day_of_week</span></code> (e.g., Monday=0, Sunday=6)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">day_of_month</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">month</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Feature and Target Separation:</strong></p>
+<ul class="simple">
+<li><p>Separate the DataFrame into features (<code class="docutils literal notranslate"><span class="pre">X</span></code>) and the target variable (<code class="docutils literal notranslate"><span class="pre">y</span></code>). The target variable is <code class="docutils literal notranslate"><span class="pre">power_consumption_kw</span></code>.</p></li>
+<li><p>The original <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> and <code class="docutils literal notranslate"><span class="pre">server_id</span></code> columns should not be part of the features <code class="docutils literal notranslate"><span class="pre">X</span></code> fed into the model.</p></li>
+</ul>
+</li>
+<li><p><strong>Feature Type Identification:</strong></p>
+<ul class="simple">
+<li><p>Identify numerical features (e.g., <code class="docutils literal notranslate"><span class="pre">x_position</span></code>, <code class="docutils literal notranslate"><span class="pre">y_position</span></code>, <code class="docutils literal notranslate"><span class="pre">server_age_days</span></code>, <code class="docutils literal notranslate"><span class="pre">rack_temperature_celsius</span></code>, and the newly engineered time features).</p></li>
+<li><p>Identify categorical features (e.g., <code class="docutils literal notranslate"><span class="pre">job_type</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware_version</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>Preprocessing Pipeline Construction:</strong></p>
+<ul class="simple">
+<li><p>Implement robust preprocessing for both numerical and categorical features, optionally using scikit-learn’s <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> and <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>.</p></li>
+<li><p><strong>Numerical Features:</strong></p>
+<ul>
+<li><p>Impute missing values using the median strategy.</p></li>
+<li><p>Scale the features using <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Categorical Features:</strong></p>
+<ul>
+<li><p>Impute missing values using the most frequent strategy.</p></li>
+<li><p>Encode the features using <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code>. Ensure it can handle unknown categories encountered during test time (e.g., by ignoring them).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Data Splitting:</strong></p>
+<ul class="simple">
+<li><p>Split the processed features and the target variable into training and testing sets. Use a 80/20 split (80% for training, 20% for testing).</p></li>
+<li><p>Ensure the split is reproducible (e.g., by using a fixed <code class="docutils literal notranslate"><span class="pre">random_state</span></code>).</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Output:</strong>
+The function should return:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X_train</span></code>: Training features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X_test</span></code>: Testing features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_train</span></code>: Training target.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_test</span></code>: Testing target.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preprocessor</span></code>: The fitted <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> object used for all preprocessing steps.</p></li>
+<li><p>A list of numerical feature names (after engineering, before transformation).</p></li>
+<li><p>A list of categorical feature names (before transformation).</p></li>
+</ul>
+<p><strong>Bonus:</strong></p>
+<ul class="simple">
+<li><p>Explain the benefits of using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> and <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">preprocess_data</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Preprocesses the time-series server data.</span>
+<span class="sd">    Extracts time features.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Feature Engineering: Extract time components *before* dropping columns</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;hour_of_day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span>
+    <span class="o">...</span>
+
+
+    <span class="c1"># Define features (X) and target (y) *after* adding time features</span>
+    <span class="c1"># server_id and original timestamp might be dropped or handled differently depending on model</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="n">numerical_features</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">categorical_features</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="n">numerical_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="p">])</span>
+
+    <span class="n">categorical_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;onehot&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="p">])</span>
+
+    <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+        <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">numerical_pipeline</span><span class="p">,</span> <span class="n">numerical_features</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">categorical_pipeline</span><span class="p">,</span> <span class="n">categorical_features</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">remainder</span><span class="o">=</span><span class="s1">&#39;passthrough&#39;</span> <span class="c1"># e.g. if we decide to keep server_id (encoded) for some reason</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Using random split for now. For true time-series forecasting, a chronological split is better.</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X_train shape: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, X_test shape: </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Missing values before preprocessing (training set sample):&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Preprocessing setup complete.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Return the original dataframe WITH the new time features for visualization/interpretation</span>
+    <span class="k">return</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">,</span> <span class="n">numerical_features</span><span class="p">,</span> <span class="n">categorical_features</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">preprocess_data</span>
+<span class="n">dataset_processed</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">preprocessor_pipeline</span><span class="p">,</span> <span class="n">num_feats</span><span class="p">,</span> <span class="n">cat_feats_orig</span> <span class="o">=</span> <span class="n">preprocess_data</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,036 - INFO - X_train shape: (6720, 11), X_test shape: (1680, 11)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,037 - INFO - Missing values before preprocessing (training set sample):
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,039 - INFO - x_position                    0
+y_position                    0
+job_type                     65
+server_age_days              71
+last_maintenance_days_ago     0
+dtype: int64
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,040 - INFO - Preprocessing setup complete.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-training-and-evaluation">
+<h2>Model Training and Evaluation<a class="headerlink" href="#model-training-and-evaluation" title="Link to this heading">#</a></h2>
+<p>Write a Python function, let’s call it <code class="docutils literal notranslate"><span class="pre">train_and_evaluate_model</span></code>, that takes preprocessed training and testing data, along with a pre-fitted preprocessor object, to train a regression model and evaluate its performance in predicting server power consumption.</p>
+<p><strong>Context:</strong>
+This function is a part of a larger machine learning workflow. You will receive data that has already been split into training and testing sets, and a preprocessor (e.g., a scikit-learn <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>) that has been fitted on the training data.</p>
+<p><strong>Inputs:</strong>
+The function <code class="docutils literal notranslate"><span class="pre">train_and_evaluate_model</span></code> should accept the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X_train</span></code>: A pandas DataFrame or NumPy array of training features (these features are <em>before</em> the preprocessor in the pipeline is applied).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X_test</span></code>: A pandas DataFrame or NumPy array of testing features (similarly, <em>before</em> the preprocessor is applied).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_train</span></code>: A pandas Series or NumPy array of the target variable (power consumption) for the training set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_test</span></code>: A pandas Series or NumPy array of the target variable for the testing set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preprocessor</span></code>: A pre-fitted scikit-learn preprocessor object (e.g., <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>) that handles transformations like scaling, encoding, and imputation.</p></li>
+</ul>
+<p><strong>Requirements for the <code class="docutils literal notranslate"><span class="pre">train_and_evaluate_model</span></code> function:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Pipeline Construction:</strong></p>
+<ul class="simple">
+<li><p>Create a scikit-learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> that includes two main steps:</p>
+<ul>
+<li><p>The provided <code class="docutils literal notranslate"><span class="pre">preprocessor</span></code> object as the first step.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code> model as the second step.</p></li>
+</ul>
+</li>
+<li><p>Configure the <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code> with the following parameters (or sensible defaults if you prefer, but state them clearly):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_estimators=100</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> (for reproducibility)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oob_score=True</span></code> (to enable Out-of-Bag score calculation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_jobs=-1</span></code> (to use all available CPU cores)</p></li>
+<li><p>Consider adding parameters like <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>, <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code>, and <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> to control tree complexity and prevent overfitting (e.g., <code class="docutils literal notranslate"><span class="pre">max_depth=15</span></code>, <code class="docutils literal notranslate"><span class="pre">min_samples_split=10</span></code>, <code class="docutils literal notranslate"><span class="pre">min_samples_leaf=5</span></code>).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Model Training:</strong></p>
+<ul class="simple">
+<li><p>Train the entire pipeline using the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> (raw training features) and <code class="docutils literal notranslate"><span class="pre">y_train</span></code> data. The pipeline will internally handle the preprocessing of <code class="docutils literal notranslate"><span class="pre">X_train</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Model Evaluation:</strong></p>
+<ul class="simple">
+<li><p><strong>Out-of-Bag (OOB) Score:</strong> If <code class="docutils literal notranslate"><span class="pre">oob_score=True</span></code> was used for the <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code>, retrieve and print the OOB R² score from the trained regressor step within the pipeline.</p></li>
+<li><p><strong>Test Set Predictions:</strong> Use the trained pipeline to make predictions on the <code class="docutils literal notranslate"><span class="pre">X_test</span></code> data (raw testing features). The pipeline will internally handle the preprocessing of <code class="docutils literal notranslate"><span class="pre">X_test</span></code>.</p></li>
+<li><p><strong>Performance Metrics:</strong> Calculate and print the following metrics using <code class="docutils literal notranslate"><span class="pre">y_test</span></code> (actual values) and the predictions made on <code class="docutils literal notranslate"><span class="pre">X_test</span></code>:</p>
+<ul>
+<li><p>Mean Squared Error (MSE).</p></li>
+<li><p>R-squared (R²) Score.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Output:</strong>
+The function should return:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: The fully trained scikit-learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> object (containing both the preprocessor and the regressor).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code>: The predictions made by the model on the <code class="docutils literal notranslate"><span class="pre">X_test</span></code> data.</p></li>
+</ul>
+<p><strong>Bonus Discussion Points:</strong></p>
+<ul class="simple">
+<li><p>Why is it important to include the <code class="docutils literal notranslate"><span class="pre">preprocessor</span></code> in the pipeline when making predictions on the test set, rather than preprocessing <code class="docutils literal notranslate"><span class="pre">X_test</span></code> separately before prediction?</p></li>
+<li><p>What is the Out-of-Bag score, and why is it useful as an evaluation metric?</p></li>
+<li><p>If you were to tune the hyperparameters for the <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>, <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>), how would you approach this? (Mention techniques like GridSearchCV or RandomizedSearchCV and how they would interact with the pipeline).</p></li>
+<li><p>What are some alternative regression models you might consider for this problem, and what are their potential advantages or disadvantages compared to Random Forest in this context?</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_and_evaluate_model</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">):</span>
+    
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="o">...</span> <span class="c1"># Adjusted params slightly</span>
+    <span class="p">])</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Training the RandomForestRegressor model...&quot;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Model training complete.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;regressor&#39;</span><span class="p">],</span> <span class="s1">&#39;oob_score_&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;regressor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">oob_score_</span><span class="p">:</span>
+         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Out-of-Bag R^2 score: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;regressor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">oob_score_</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="o">...</span> <span class="c1"># Make predictions on the test set</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Model Performance on Test Set:&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MSE): </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared (R2) Score: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span><span class="p">,</span> <span class="n">y_pred</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_and_evaluate_model</span>
+<span class="n">trained_model</span><span class="p">,</span> <span class="n">y_predictions</span> <span class="o">=</span> <span class="n">train_and_evaluate_model</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">preprocessor_pipeline</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,059 - INFO - Training the RandomForestRegressor model...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,491 - INFO - Model training complete.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,494 - INFO - Out-of-Bag R^2 score: 0.9318
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,531 - INFO - 
+Model Performance on Test Set:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,532 - INFO - Mean Squared Error (MSE): 0.0003
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,532 - INFO - R-squared (R2) Score: 0.9177
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="interview-task-model-interpretation-and-data-discovery-for-server-power-consumption">
+<h2>Interview Task: Model Interpretation and Data Discovery for Server Power Consumption**<a class="headerlink" href="#interview-task-model-interpretation-and-data-discovery-for-server-power-consumption" title="Link to this heading">#</a></h2>
+<p><strong>Problem Statement:</strong>
+Write a Python function, let’s call it <code class="docutils literal notranslate"><span class="pre">interpret_model</span></code>, that takes a trained machine learning model pipeline, the original dataset, and lists of feature names to perform model interpretation and data discovery. The goal is to extract insights about what drives server power consumption and to visualize key trends.</p>
+<p><strong>Context:</strong>
+Assume you have already trained a scikit-learn pipeline (containing a preprocessor and a regressor like <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code>) to predict <code class="docutils literal notranslate"><span class="pre">power_consumption_kw</span></code>. You also have access to the original, untransformed DataFrame and the names of the features used.</p>
+<p><strong>Inputs:</strong>
+The function <code class="docutils literal notranslate"><span class="pre">interpret_model</span></code> should accept the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model_pipeline</span></code>: The trained scikit-learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> object (which includes a preprocessor step and a regressor step, e.g., <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df_original</span></code>: The original pandas DataFrame containing all data, including <code class="docutils literal notranslate"><span class="pre">timestamp</span></code>, <code class="docutils literal notranslate"><span class="pre">server_id</span></code>, <code class="docutils literal notranslate"><span class="pre">x_position</span></code> (row), <code class="docutils literal notranslate"><span class="pre">y_position</span></code> (column), <code class="docutils literal notranslate"><span class="pre">power_consumption_kw</span></code>, and all other raw features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numerical_feature_names</span></code>: A list of strings representing the names of the numerical features <em>after</em> any time-based feature engineering (e.g., <code class="docutils literal notranslate"><span class="pre">['x_position',</span> <span class="pre">'hour_of_day',</span> <span class="pre">'rack_temperature_celsius',</span> <span class="pre">...]</span></code>) but <em>before</em> scaling or imputation by the preprocessor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">categorical_feature_names_original</span></code>: A list of strings representing the names of the original categorical features (e.g., <code class="docutils literal notranslate"><span class="pre">['job_type',</span> <span class="pre">'firmware_version']</span></code>) <em>before</em> one-hot encoding by the preprocessor.</p></li>
+</ul>
+<p><strong>Requirements for the <code class="docutils literal notranslate"><span class="pre">interpret_model</span></code> function:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Feature Importance Analysis:</strong></p>
+<ul class="simple">
+<li><p>Extract feature importances from the regressor step of the <code class="docutils literal notranslate"><span class="pre">model_pipeline</span></code>.</p></li>
+<li><p>Correctly map these importances to their corresponding feature names. This requires accessing the fitted preprocessor within the pipeline to get the names of one-hot encoded categorical features.</p></li>
+<li><p>Print a DataFrame or a sorted list of the top N (e.g., top 20) feature importances.</p></li>
+<li><p>Generate and save a bar plot visualizing these top N feature importances.</p></li>
+</ul>
+</li>
+<li><p><strong>Correlation Analysis:</strong></p>
+<ul class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">df_original</span></code> DataFrame, calculate the correlation matrix between all features listed in <code class="docutils literal notranslate"><span class="pre">numerical_feature_names</span></code> and the target variable (<code class="docutils literal notranslate"><span class="pre">power_consumption_kw</span></code>).</p></li>
+<li><p>Print this correlation matrix.</p></li>
+<li><p>Generate and save a heatmap visualization of this correlation matrix.</p></li>
+</ul>
+</li>
+<li><p><strong>Time-Series Visualization:</strong></p>
+<ul class="simple">
+<li><p>Select a single, sample <code class="docutils literal notranslate"><span class="pre">server_id</span></code> from <code class="docutils literal notranslate"><span class="pre">df_original</span></code>.</p></li>
+<li><p>Generate and save a line plot showing its <code class="docutils literal notranslate"><span class="pre">power_consumption_kw</span></code> over the <code class="docutils literal notranslate"><span class="pre">timestamp</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Spatial Power Consumption Heatmap &amp; Contours:</strong></p>
+<ul class="simple">
+<li><p>From <code class="docutils literal notranslate"><span class="pre">df_original</span></code>, calculate the average <code class="docutils literal notranslate"><span class="pre">power_consumption_kw</span></code> for each unique server location (defined by <code class="docutils literal notranslate"><span class="pre">x_position</span></code> and <code class="docutils literal notranslate"><span class="pre">y_position</span></code>).</p></li>
+<li><p>Generate and save a 2D heatmap (e.g., using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.tricontourf</span></code> or a similar method suitable for potentially irregularly spaced data if not on a perfect grid) that visualizes this average power consumption across the X-Y plane of server locations.</p></li>
+<li><p>Overlay contour lines on the heatmap.</p></li>
+<li><p>Optionally, scatter plot the actual server locations on top of the heatmap.</p></li>
+<li><p>Ensure axes are labeled appropriately (e.g., “X Position (Row)”, “Y Position (Column)”).</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Output:</strong>
+The function should primarily produce printouts of the analyses (feature importances, correlation matrix) and save the generated plots to files (e.g., “feature_importances.png”, “correlation_heatmap.png”, “sample_server_power_trend.png”, “spatial_power_heatmap.png”). It does not need to return any specific Python objects, though returning a dictionary of generated artifacts (like DataFrames or plot objects) could be an extension.</p>
+<p><strong>Bonus Discussion Points:</strong></p>
+<ul class="simple">
+<li><p>How can the insights from feature importances be used to guide business decisions or further model improvements?</p></li>
+<li><p>What are the limitations of relying solely on feature importances from a tree-based model like Random Forest?</p></li>
+<li><p>What other types of plots or analyses could be performed on <code class="docutils literal notranslate"><span class="pre">df_original</span></code> to discover more patterns related to server power consumption (e.g., box plots of power by <code class="docutils literal notranslate"><span class="pre">job_type</span></code>)?</p></li>
+<li><p>If the server locations (<code class="docutils literal notranslate"><span class="pre">x_position</span></code>, <code class="docutils literal notranslate"><span class="pre">y_position</span></code>) formed a regular grid, how might your approach to generating the spatial heatmap change?</p></li>
+<li><p>How would you handle a situation where the number of one-hot encoded features becomes very large when extracting feature importances?</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">interpret_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">df_with_time_features</span><span class="p">,</span> <span class="n">numerical_features</span><span class="p">,</span> <span class="n">categorical_features_original</span><span class="p">):</span>
+    <span class="n">preprocessor_fitted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;preprocessor&#39;</span><span class="p">]</span>
+    <span class="n">onehot_encoder</span> <span class="o">=</span> <span class="n">preprocessor_fitted</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;onehot&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Numerical features names are direct from the input list</span>
+    <span class="n">num_feat_names</span> <span class="o">=</span> <span class="n">numerical_features</span>
+
+    <span class="c1"># Categorical features names come from one-hot encoder</span>
+    <span class="n">cat_feat_names_onehot</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="n">all_feature_names_transformed</span> <span class="o">=</span> <span class="n">num_feat_names</span> <span class="o">+</span> <span class="n">cat_feat_names_onehot</span>
+
+    <span class="n">importances</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># Extract feature importances from the regressor step</span>
+
+    <span class="n">feature_importance_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="n">all_feature_names_transformed</span><span class="p">,</span> <span class="s1">&#39;importance&#39;</span><span class="p">:</span> <span class="n">importances</span><span class="p">})</span>
+    <span class="n">feature_importance_df</span> <span class="o">=</span> <span class="n">feature_importance_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Feature Importances:&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">feature_importance_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span> <span class="c1"># Show more features</span>
+
+    <span class="c1"># Save feature importance plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="o">...</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top Feature Importances (Time-Series Model)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;feature_importances_timeseries.png&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Feature importance plot saved as feature_importances_timeseries.png&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Correlation Matrix (on original numerical + engineered time features)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Correlation Matrix (Numerical &amp; Time Features vs Target):&quot;</span><span class="p">)</span>
+    <span class="c1"># Use the dataframe that already has the time features</span>
+    <span class="n">cols_for_corr</span> <span class="o">=</span> <span class="n">numerical_features</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;power_consumption_kw&#39;</span><span class="p">]</span>
+    <span class="n">df_for_corr</span> <span class="o">=</span> <span class="n">df_with_time_features</span><span class="p">[</span><span class="n">cols_for_corr</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_for_corr</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">df_for_corr</span><span class="o">.</span><span class="n">empty</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_for_corr</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">correlation_matrix</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="o">...</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix (Numerical &amp; Time Features and Target)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;correlation_matrix_timeseries.png&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Correlation matrix plot saved as correlation_matrix_timeseries.png&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Not enough data for correlation matrix.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot power consumption over time for a sample server</span>
+    <span class="c1"># Use the dataframe that already has the time features</span>
+    <span class="n">sample_server_id</span> <span class="o">=</span> <span class="n">df_with_time_features</span><span class="p">[</span><span class="s1">&#39;server_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sample_server_data</span> <span class="o">=</span> <span class="n">df_with_time_features</span><span class="p">[</span><span class="n">df_with_time_features</span><span class="p">[</span><span class="s1">&#39;server_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sample_server_id</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="o">...</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Power Consumption Over Time for </span><span class="si">{</span><span class="n">sample_server_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Timestamp&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Consumption (kW)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;power_over_time_sample_server.png&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Power over time plot for </span><span class="si">{</span><span class="n">sample_server_id</span><span class="si">}</span><span class="s2"> saved as power_over_time_sample_server.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret_model</span>
+<span class="n">interpret_model</span><span class="p">(</span><span class="n">trained_model</span><span class="p">,</span> <span class="n">dataset_processed</span><span class="p">,</span> <span class="n">num_feats</span><span class="p">,</span> <span class="n">cat_feats_orig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,572 - INFO - Feature Importances:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,573 - INFO -                          feature  importance
+11                 job_type_Idle    0.784919
+10         job_type_IO_intensive    0.072289
+9         job_type_CPU_intensive    0.041128
+5                    hour_of_day    0.030519
+0                     x_position    0.028205
+1                     y_position    0.008160
+4       rack_temperature_celsius    0.006012
+2                server_age_days    0.005158
+13           job_type_Mixed_load    0.004962
+7                   day_of_month    0.004707
+6                    day_of_week    0.004632
+3      last_maintenance_days_ago    0.004611
+12     job_type_Memory_intensive    0.003263
+14       firmware_version_v1.0.1    0.000388
+15       firmware_version_v1.2.3    0.000387
+17       firmware_version_v2.1.5    0.000291
+16  firmware_version_v2.0.0_beta    0.000212
+18       firmware_version_v2.2.0    0.000157
+8                          month    0.000000
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,869 - INFO - 
+Feature importance plot saved as feature_importances_timeseries.png
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:13,870 - INFO - 
+Correlation Matrix (Numerical &amp; Time Features vs Target):
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:14,253 - INFO - 
+Correlation matrix plot saved as correlation_matrix_timeseries.png
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:14,453 - INFO - 
+Power over time plot for server_001 saved as power_over_time_sample_server.png
+</pre></div>
+</div>
+<img alt="_images/ccbaf86b31ab6b69e8f3043fce3bbe503f87fea1612c6e52a5b85587ae755e72.png" src="_images/ccbaf86b31ab6b69e8f3043fce3bbe503f87fea1612c6e52a5b85587ae755e72.png" />
+<img alt="_images/ee50f17ae96635771b7980f288151874401886741db24a96b6b950625edd378c.png" src="_images/ee50f17ae96635771b7980f288151874401886741db24a96b6b950625edd378c.png" />
+<img alt="_images/00925182bb9ff9bb8f77f1397244a7b25c80718ea8a180ae40a3bcfd0b10ef84.png" src="_images/00925182bb9ff9bb8f77f1397244a7b25c80718ea8a180ae40a3bcfd0b10ef84.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot Actual vs. Predicted</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predictions</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="n">y_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Actual Power Consumption (kW)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predicted Power Consumption (kW)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Actual vs. Predicted Power Consumption (Time-Series Model)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;actual_vs_predicted_timeseries.png&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Actual vs. Predicted plot saved as actual_vs_predicted_timeseries.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-06-03 09:56:15,160 - INFO - 
+Actual vs. Predicted plot saved as actual_vs_predicted_timeseries.png
+</pre></div>
+</div>
+<img alt="_images/29d0a52a35d192fd31832343cc2f3a2917b9719021807279e67c51e705b27956.png" src="_images/29d0a52a35d192fd31832343cc2f3a2917b9719021807279e67c51e705b27956.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cerebras Inference Data Science Interview</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-center-dataset">Load Data Center Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-data-center-dataset-and-make-one-simple-plot">Generate the Data Center dataset and make one simple plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing-and-cleaning">Data Preprocessing and Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training-and-evaluation">Model Training and Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interview-task-model-interpretation-and-data-discovery-for-server-power-consumption">Interview Task: Model Interpretation and Data Discovery for Server Power Consumption**</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Omid Shams Solari & Ashot Melik-Martirosian
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
